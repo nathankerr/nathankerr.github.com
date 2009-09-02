@@ -8,7 +8,7 @@ h1{text-align: center}. Nathan Kerr
 p{text-align:center}. Phone: (602) 325-3299
 Email: "nathan@nathankerr.com":mailto:nathan@nathankerr.com
 
-_|Profile|Skills|
+|_.Profile|_.Skills|
 |My curiosity drives my strong interest in technology. In my spare time I enjoy learning about other cultures and languages. I can read Chinese and Ancient Greek. | Parallel Programming using MPI. Web site administration and development including work with Ruby on Rails. Linux based cluster administration. Programming in C/C++, Ruby, Perl, Python, Java. |
 
 h2. Education
