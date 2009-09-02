@@ -4,7 +4,7 @@ layout: default
 ---
 h1. Projects
 
-h2. clusterGIS:http://github.com/nathankerr/clusterGIS
+h2. "clusterGIS":http://github.com/nathankerr/clusterGIS
 
 GIS processing on clusters using MPI and the GEOS library.
 

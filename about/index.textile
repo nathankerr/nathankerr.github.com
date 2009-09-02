@@ -12,5 +12,4 @@ Phone: 602-325-3299
 
 h2. Additional Information/Resources
 
-Resume:/resume
-
+"Resume":/about/resume.html

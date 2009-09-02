@@ -1,0 +1,63 @@
+---
+layout: default
+title: Resume
+---
+
+h1{text-align: center}. Nathan Kerr
+
+Phone: (602) 325-3299
+Email: "nathan@nathankerr.com":mailto:nathan@nathankerr.com
+
+h2. Profile
+
+My curiosity drives my strong interest in technology. In my spare time I enjoy learning about other cultures and languages. I can read Chinese and Ancient Greek.
+
+h2. Skills
+
+Parallel Programming using MPI. Web site administration and development including work with Ruby on Rails. Linux based cluster administration. Programming in C/C++, Ruby, Perl, Python, Java.
+
+h2. Education
+
+h3. M.S., Computer Science
+
+Arizona State University — Advisor: Dan Stanzione — Expected December 2009
+
+Developed the Urban Systems Framework, a data centric workflow for GIS processing. Thesis on processing and analyzing GIS data on compute clusters utilizing PostGIS, Hadoop, and MPI.
+
+h3. B.A., Journalism and Mass Communication: Media Production
+
+Arizona State University — May 2006
+
+Focused on the technical aspects of video production including field and studio production. Gained experience producing, directing, and operating camera, switching, audio, and LVM (live-video-motion) equipment.
+
+h2. Experience
+
+h3. Research Assistant
+
+Arizona State University High Performance Computing Institute, Tempe, Arizona — 2007-Present
+
+Top 500 class cluster operations and development. Consulted on geospatial (GIS) data management and processing including running simulations, developing a data centric framework for organizing, processing, and visualizing GIS data, and exploring methods to execute GIS processing and analysis in parallel.
+
+h3. Student Systems Administrator
+
+Arizona State University High Performance Computing Institute, Tempe Arizona — 2006-2007
+
+Administered a Top 500 class Supercomputer. Specific responsibilities included designing and implementing systems monitoring, improving communication with users using wiki based technology and ticket tracking software. Discovered and solved many systems related issues.
+
+h3. Senior Student Worker
+
+Arizona State University Engineering Technical Services, Tempe, Arizona — 2003-2006
+
+Oversaw five student workers in front line computer support for the Ira A. Fulton School of Engineering. Designed and implemented related programs and policies including server monitoring with Nagios.
+
+h3. Missionary
+
+The Church of Jesus Christ of Latter-day Saints, Hong Kong — 2000-2002
+
+Learned to speak and read Cantonese-Chinese. Presented messages on the gospel of Jesus Christ to citizens of Hong Kong in their native tongue.
+
+h3. Production Enabler
+
+Siemens Enterprises, Inc., Hereford, Arizona — 1996-2000
+
+Enabled all aspects of video production from teleprompting to running camera to directing live cable-casts of the local city council meetings.
