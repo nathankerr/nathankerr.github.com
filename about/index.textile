@@ -1,0 +1,16 @@
+---
+title: About
+layout: default
+---
+
+I am currently a graduate student at "Arizona State University":http://asu.edu working on a M.S. in computer science, focused in "High Performance Computing":http://hpc.asu.edu.
+
+h2. Contact Info
+
+Email: nathan@nathankerr.com
+Phone: 602-325-3299
+
+h2. Additional Information/Resources
+
+Resume:/resume
+

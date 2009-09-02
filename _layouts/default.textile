@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+<head>
+	<title>
+		{% if page.title %}
+			{{ page.title }} -
+		{% elsif post.title %}
+			{{ post.title }} -
+		{% endif %}
+		Nathan Kerr
+	</title>
+	<style type="text/css">
+		#nav { border-bottom: 1px solid }
+		#nav a { text-decoration: none }
+		body { margin-left: 2em; margin-right: 2em }
+	</style>
+</head>
+<body>
+<p id="nav">
+	<a href="/">Home</a>
+	| <a href="/about">About</a>
+	| <a href="/projects">Projects</a>
+</p>
+
+{{ content }}
+
+</body>
+</html>
