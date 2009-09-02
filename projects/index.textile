@@ -1,0 +1,17 @@
+---
+title: Projects
+layout: default
+---
+h1. Projects
+
+h2. clusterGIS:http://github.com/nathankerr/clusterGIS
+
+GIS processing on clusters using MPI and the GEOS library.
+
+h2. "GIS on Hadoop":/projects/gis-on-hadoop.html
+
+GIS processing on the Hadoop Map/Reduce framework. This was done as a school project.
+
+h2. "Urban Systems Framework":/projects/urban-systems-framework.html
+
+A data centric method of processing GIS data.<br>
