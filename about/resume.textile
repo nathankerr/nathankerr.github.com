@@ -11,7 +11,7 @@ Email: "nathan@nathankerr.com":mailto:nathan@nathankerr.com
 |_.Profile|_.Skills|
 |My curiosity drives my strong interest in technology. In my spare time I enjoy learning about other cultures and languages. I can read Chinese and Ancient Greek. | Parallel Programming using MPI. Web site administration and development including work with Ruby on Rails. Linux based cluster administration. Programming in C/C++, Ruby, Perl, Python, Java. |
 
-h2. Education
+h2{text-align:center}. Education
 
 h3. M.S., Computer Science
 Arizona State University — Advisor: Dan Stanzione — Expected December 2009
@@ -23,7 +23,7 @@ Arizona State University — May 2006
 
 Focused on the technical aspects of video production including field and studio production. Gained experience producing, directing, and operating camera, switching, audio, and LVM (live-video-motion) equipment.
 
-h2. Experience
+h2{text-align:center}. Experience
 
 h3. Research Assistant
 Arizona State University High Performance Computing Institute, Tempe, Arizona — 2007-Present
