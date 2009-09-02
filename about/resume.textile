@@ -5,7 +5,7 @@ title: Resume
 
 h1{text-align: center}. Nathan Kerr
 
-Phone: (602) 325-3299
+p{text-align:center}. Phone: (602) 325-3299
 Email: "nathan@nathankerr.com":mailto:nathan@nathankerr.com
 
 h2. Profile
