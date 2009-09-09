@@ -1,6 +1,6 @@
 ---
 title: Projects
-layout: default
+layout: comments
 ---
 h1. Projects
 

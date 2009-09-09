@@ -18,7 +18,7 @@
 </head>
 <body>
 <p id="nav">
-	<a href="/">Home</a>
+	<a href="/">Blog</a>
 	| <a href="/about">About</a>
 	| <a href="/projects">Projects</a>
 </p>
