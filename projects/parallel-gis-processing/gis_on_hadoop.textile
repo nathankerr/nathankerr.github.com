@@ -1,4 +1,8 @@
---- title: GIS on Hadoop layout: comments --- h1. GIS on Hadoop
+---
+title: GIS on Hadoop
+layout: comments
+---
+h1. GIS on Hadoop
 
 h2. Team Members
 
@@ -131,7 +135,7 @@ Figure 3 and the tables below give run times for each test case on the large dat
 | PostGIS #2 | 6 hours | 18.1 hours |
 
 <table>
-	<tr><td>!gis_on_hadoop-large-results.png!</td></tr>
+	<tr><td>!gis_on_hadoop-large_results.png!</td></tr>
 	<caption>Figure 3: Comparing run time processing of a large dataset in PostGIS and Hadoop using different number of compute nodes.</caption>
 </table>
 
