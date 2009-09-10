@@ -4,6 +4,8 @@ layout: comments
 ---
 h1. GIS on Hadoop
 
+11 May 2009
+
 h2. Team Members
 
 * Nathan Kerr
