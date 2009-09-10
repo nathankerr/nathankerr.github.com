@@ -1,0 +1,243 @@
+---
+title: A data centric framework for research in planning
+layout: comments
+---
+h1. A data centric framework for research in planning
+
+(In proceeding of UPE8, March 2009)
+
+Robert Pahle and Nathan Kerr
+
+Decision Theater, Arizona State University, Tempe, Arizona, USA
+
+Fulton High Performance Computing, Arizona State University, Tempe, USA
+
+Robert.Pahle@asu.edu Nathan.Kerr@asu.edu
+
+h2. Abstract
+
+In this paper we report about the Urban Systems Framework (USF) that was developed within the Digital Phoenix project at Arizona State University. Digital Phoenix is an effort to create a planning tool that allows keen insight into urban dynamics in the Phoenix metropolitan area through the use of state-of-art visualization, simulation, and GIS tools, combined with detailed social, economic and environmental data. These goals are only achievable in a collaborative interdisciplinary research approach. This approach led to several technological challenges during the course of the research:
+
+# Storage and organization of the data that researchers and collaborators need for their work
+# Automation of data processing, conversion, and automated execution of simulations
+# Interoperability for collaboration and distribution of result sets
+
+The framework that we present in this paper addresses these challenges. It is built on a data centric workflow, allows the use of many freely available software tools due to the use of open standards, and supports collaboration with internet based infrastructure.
+
+h2. 1. Introduction
+
+h3. 1.1. Motivation and requirements
+
+The Digital Phoenix Project is an effort to gain insight into urban dynamics in the Phoenix metropolitan area.  To do that a wide variety of GIS, simulation, and visualization tools have to be combined with detailed social, economic and environmental data.  The different parts of the project are worked on by different researchers that are experts in the required fields of interest. Initially every researcher worked with the data on their own computer.  If data needed to be exchanged, the current data set was bundled up in a file and sent to other researchers that needed to work with this information.  Often there was a need to correct information that was just sent.  This workflow led to many different copies of the same data set stored redundantly on several different computers.  Over time it was not clear anymore which copy of a data set was the most current and on which computer was it stored. There are many solutions to solve this problem.  However, there are some characteristics that stand out in this problem set and that distinguish it from let's say a software development workflow.
+
+* large geospatial data sets need to be handled seamlessly
+* there needs to be a workflow to collect the data, to clean it, to process and manipulate it, and to visualize it
+* this workflow needs to maintain the integrity of the data and allow all parties to access it during the respective stages
+
+h3. 1.2. Relevance in planning
+
+Planning decisions have often far-reaching effects on the complex systems of our cities. Good planning decisions are therefore very important for our daily lives and the environment. But how do we support good decision-making in planning? One way is to base decisions on the best information available. This information could be collected data, like assessor’s data, census data, data about energy use of buildings, and a wide variety of other data sets. It could also be information that is derived from these data sets like metrics about carbon emissions or relationships between parameters like fuel consumption and distance between home and workplace. An even higher level of information would be a predictive model that shows for instance, where future population in a growing city would live. The presented framework enables researchers and planners to integrate the information that they already collect in a purposeful manner, use a variety of metrics or even predictive models, and powerful visualization tools to aid the decision-making process.
+
+h2. 2. Other frameworks
+
+The Open Platform for Urban Simulation (OPUS) is an urban simulation programming environment that most notably hosts the UrbanSim models (Waddell, Ševčíková, Socha, Miller, & Nagel, 2005). Implemented in Python, OPUS is designed as a real-time and batch environment for designing and then running urban simulations. While data can be stored in OPUS, it caches datasets and is meant as simulation workspace instead of a data repository.
+
+h2. 3. Urban Systems Framework
+
+The Urban Systems Framework (USF) is designed to organize and store the wide variety of data Digital Phoenix manages, automate repeatable data processing, and provide interoperability both between software environments and project working groups.
+
+The USF framework is composed of two main parts. On one hand, it is a logical structure that allows handling diverse data sets in a concise fashion. On the other hand, it consists of a substantial set of tools that use a client/server paradigm to enable generic database and GIS functions (Wikipedia, 2009). It also provides enhanced methods for visualization, hookups to simulation tools, and supports web-access tools that allow working on datasets in a distributed fashion.
+
+h3. 3.1. Logical Structure
+h4. 3.1.1. Data-centric Workflow
+
+The logical structure is built around a data-centric workflow. Figure 1 shows how the data is stepped through the framework. In step one data the data is loaded into the database (please refer to the tools section). This data could come from all kinds of sources like assessor, census or private companies that offer datasets. However, these datasets are normally not yet ready for use. Often the data has to be corrected in a labor intensive step. Once the data has been corrected and there is trust in the accuracy of the dataset it is considered clean data and is ready to be used. The initial data (as received from the sources) is still stored for reference.
+
+<table>
+	<caption>Figure 1: Data workflow in the USF</caption>
+	<tr><td>!a_data_centric_framework_for_research_in_planning-data_workflow.gif!</td></tr>
+</table>
+
+The clean data can be converted to a dataset that can be used by a simulation. In the digital-phoenix project this preparation step was initially done by a research assistant with arc-map and other desktop GIS tools. There are several problems that arise with this approach. The biggest problem is that mainly the person that did the processing knows which steps were taken to prepare the data. If the person is gone (and this happened several times) it is very difficult to understand how the data was prepared. Later that led to questions about validity of the dataset. We also encountered problems during the generation of scenarios. If several people worked on different scenarios the preparation of the datasets were slightly different, which invalidates the comparability of the scenarios. To counter these challenges it was necessary that all the preparation steps would be meticulously documented. Finally all preparation work was scripted in SQL (structured query language) the native way of programming the database system. This approach has the big advantage that all the preparation is repeatable and the scripts show exactly which steps were taken to process the data. If there are questions later on about the validity of the simulation one big portion of consistent evidence is available for review. After the preparation of the data, datasets can be converted into the right format for the simulation. Each data format requires a conversion program, but as there is a standard data format there is no need to covert between various different formats, just to and from the standard. In our case the data was mainly used to drive UrbanSim for population allocation projection. Once the simulation is finished the result data is converted to the standard format before loading the result datasets into the database.
+
+The final step for the workflow is the ability to visualize the data directly out of the database. Our framework includes a kml-generator that is able to 2-D and 3-D visualizations directly out of the database. It can use datasets from all of the previous steps. However, the initial datasets may not be consistent enough to be able to run though the visualization process. Therefore the diagram in 1 does not include a direct connection form step one to step 6.
+
+h4. 3.1.2.Data Types
+
+Although the diagram in Figure 1 is applicable to all data-types that are handled by the framework there are slight differences in how the datasets are stored. Figure 2 shows the data-types and how they are handled by the framework as well as the integration of different data-types into a common operating picture.
+
+<table>
+	<caption>Figure 2: Data-types and Processing of Datasets for visualization</caption>
+	<tr><td>!a_data_centric_framework_for_research_in_planning-data_types.gif!</td></tr>
+</table>
+
+The left side lists all the data-types that can be handled. The storage column shows where that data is stored on the server. The middleware is partially necessary to process and prepare the data for delivery. This is also the layer that can generate time-series and 3-D visualization from the raw datasets (KML Manager). The next section (WebServer) shows how the data sets are delivered to the respective applications. Under client software a set of example applications are listed that is able to visualize the data-sets. Some applications, like QuantumGIS and uDig, can also directly manipulate the data and save it back into the respective locations. The diagram in 2 does not show how the data is loaded into the database. At the moment there are custom web-pages available that can be used to load files in the following formats: .shp and .kml (2-D and 3-D GIS geometries), .csv for comma separated tabular data, .kmz and .dae for geo-referenced 3-D collada models. Please refer also to the tools section later in this paper.
+
+h4. 3.1.3. Metadata
+
+As urban simulation projects evolve and progress the organization of data becomes paramount. From keeping track of data sources, to changes and evolutions of datasets, metadata helps keep the research team organized.
+
+<table>
+	<caption>Figure 3: PG-Admin, view of the Digital Phoenix database</caption>
+	<tr><td>!a_data_centric_framework_for_research_in_planning-pg_admin.gif!</td></tr>
+</table>
+
+Metadata is also stored in the database along with the datasets. Metadata requirements are derived from the OpenGIS Catalogue Services Specification 2.0.2, with temporal coverage data being added. Metadata is accessed through direct database connection or a custom web interface. An OpenGIS Catalogue compliant server will be added in the future as another method to access the metadata. The metadata contains information such as where the dataset is currently residing, who contributed the data set, where the dataset came from, and the rate of errors in the dataset.
+
+In addition to storing metadata in the database a basic set of metadata tags is also added to the table names (Figure 3). In this way it is possible to get a basic understanding of the dataset even if the metadata server is not available. While uploading the dataset the metadata input is automatically enforced. In other words the system does not accept datasets without metadata and, in case of the shape-files, projection information. This ensures that all datasets in the database are consistent and will match later on.
+
+h4. 3.1.4. Security
+
+The Urban Systems Framework's access and provisioning policies are designed to increase the validity and reusability of data. Access policies are implemented using PostgreSQL's access control functionality. Provisioning policies are derived from access policies.
+
+Most data is available as a read-only resource (i.e., updates are not permitted). Data can also be restricted to individual users or groups when greater security is needed. Direct modification of data sources is discouraged as determining the validity of the data by tracing the source of modification and changes becomes very difficult if that is allowed.
+
+Data is separated into validated and untrusted zones. Any component of the framework can create untrusted data. Trusted components (i.e., simulations) can create new trusted data. For a component to be trusted, a validation and verification process must be undergone. This trust architecture is supported by being able to trace data sources, creators, and error rates.
+
+h3. 3.2. Technology of the Urban Systems Framework – The Toolset
+
+USF is built on the idea that it uses one coherent core and many individual tools that can be used in conjunction with that core. The tools are grouped in server-side and client-side tools.
+
+h4. 3.2.1. The Core
+
+The Urban Systems Framework (USF) core is the PostgreSQL database management system that serves as the central point of access for all Digital Phoenix data. The USF attempts to break down the barriers of data exchange, thus increasing the coherence and efficiency of the Digital Phoenix Project. In addition to increasing access to data, USF also increases knowledge retention and sharing by its very nature. By utilizing software that is compatible with standards defined by the Open Geospatial Consortium (Open Geospatial Consortium, 2009a) defined standards, the framework is able to be utilized by a variety of software, both open and proprietary. USF runs on the PostgreSQL (Postgres Global Development Group, 2009) database server made geospatial aware with the PostGIS (Refractions Research, 2009) extension. PostgreSQL is an open source database with well-defined and open access protocols. PostGIS is an open source extension to PostgreSQL which compiles with the OGC Simple Features SQL (Open Geospatial Consortium, 2009b) standard. Metadata is stored in PostgreSQL and is compatible with the OGC Catalogue (Open Geospatial Consortium, 2009c) standard. Models for 3D visualization are stored in the open Collada (Khronos Group, 2009) format. Because of its adherence to open standards, the Urban Systems Framework is able to utilize preexisting software packages such as ArcGIS, Autodesk 3ds Max, and Google Earth to manipulate and view data.
+
+During the process of selecting the correct database several other database management systems were considered. One of the most popular is ArcSDE (ESRI, 2009a). ArcSDE not a database-management system in the tightest sense, but rather is designed to enable spatial processing with several database-management systems like MS-SQL-Server, DB2, Informix, and Oracle (ESRI, 2009b). Other spatially enabled database management systems are Oracle with spatial extensions and MySQL with spatial extensions. Every system has it’s pros and cons, but the main reasons for selecting the Postgres/PostGIS combination were that it was open source, free of cost, there are many tools to access the data, and there is a large community to support projects.
+
+h4. 3.2.2. Server-Side Tools
+
+Tools that run on the server are used to process and prepare datasets. It is necessary to use different tools for the different types of data, since there is no tool that can handle all the data-types at once. Please refer to the diagram in 2 to get a picture on how different datasets are processed.
+Vector data, Tabular data and Metadata
+
+The data-types that are handled by the PostGIS database are vector data (points, lines, polygons), tabular data and metadata. Other data-types like raster-datasets (aerial photographs, terrain information) and 3D-Objects (e.g. 3D building models) are stored and processed differently, but referenced through the database. In addition text, images and videos are partially stored and referenced in through the database. However there is an additional layer of management though an enterprise level, open source content management system - typo3 (TYPO3 Association, 2009).
+
+h5. Simulations
+
+The framework is built on the premise that different researchers can use an automated process to run simulations and visualize the results seamlessly. The main simulation that is used in the Digital Phoenix project is UrbanSim (http://www.urbansim.org/). UrbanSim, now in its fourth iteration, is a regional scale urban simulation system. It’s main use for the project is to predict where people will live in the future. The framework uses a wrapper script to prepare the necessary input data for UrbanSim, start the simulation, and import the data back into the database. Simulation scenarios have to be prepared manually using the tools in the toolset.
+
+The framework was also successfully used with PowerSim (Powersim Software AS, 2009) to simulate the spread of pandemic flu (Figure 5) and to look at water supplies for cities. In these cases different scenarios were generated using PowerSim as a frontend.
+
+For statistical analysis the software package R software package can directly access PostGIS. In addition many common windows programs (like Excel) can access PostgreSQL through Open Database Connectivity (ODBC).
+
+h5. Parallelization
+
+Depending on the size of the datasets and the type of geospatial operations queries can be slow. One way if increasing the speed of queries is to parallelize the processing of the queries.
+
+GRASS (Geographic Resources Analysis Support System) is a GIS tool like ArcGIS or Quantum GIS managed by the Open Source Geospatial Foundation (osgeo.org) that has a network based mode that allows for multiple users to work together collaboratively on a shared dataset. Huang et al. (2007) took advantage of this multi-user functionality to utilized a high performance cluster environment to process multiple aspects of a dataset concurrently. The main limitation to this scheme is that no single operation will run faster, even though multiple operations could be ran concurrently. This form of parallelization will work no faster than the slowest computation that needs to be completed. Though in some cases this produces acceptable speedup, near-real-time results could not be obtained.
+
+Even though Hunag et al. (2007) were not able to obtain a significant increase in processing speed we are working on scaling the processing across several computers. Basically the idea is to increase the speed for a set of basic queries that can be scaled appropriately in a cluster environment.
+3.2.3. Client-Side Tools
+
+To access, explore and analyze the datasets a variety of tools is available. On one hand there are tools that are just generic database access tools. These tools do not account for the geospatial nature of some datasets. On the other hand there are tools that can directly visualize the geometry and associated attributes.
+Generic Database Access Tools
+
+As soon as the data is in the database all collaborators can access and manipulate the database by means of standard GIS and database tools. The most basic tool is delivered directly with the database. PSQL is a command-line tool that accepts SQL queries that can be executed directly and database management system. A similar tool, but with a graphical user interface is PG-Admin III (citation). PG-Admin allows users to access and edit the database without knowing SQL syntax (Figure 3). These two tools are generic tools to access the database. They have no inbuilt functions to visualize the geospatial datasets. However, both tools are capable to manipulate geospatial data though the extension of the standard SQL command-set. This scripting capability is a powerful means to manipulate data. Especially if data has to be manipulated in the same way over and over again scripting can ensure that the data is always manipulated in the same fashion. An additional advantage is that the script can later be used to retrace the processing steps for validation.
+
+h5. Spatial Access Tools
+
+Several tools are available to make direct use of the geospatial capabilities. QuantumGIS  (Quantum GIS Community, 2009), as well as uDIG  (Refractions Research, 2008) are tools that can project and graphically display points lines and polygons that are stored in the database. It is also possible to manipulate geometries directly from the software. The GIS packages gvSIG and OpenJUMP are able to access the PostGIS database through appropriate extensions. However, the analysis functions that are available with these open source tools are somewhat limited and many researchers are used to ESRI’s ArcGIS software. Therefore it would be great to have direct access from ArcGIS Desktop to the PostGIS database. This can be accomplished with the help of the ZigGIS plugin (Obtuse Software, LLC, 2008) for ArcGIS. This plug-in allows accessing the PostGIS database in a similar fashion to accessing an ArcSDE database and all the analysis functionality that the researchers are used to is available.
+
+<table>
+	<caption>Figure 4: Example QuantumGIS with Georeferenced Jobs dataset</caption>
+	<tr><td>!a_data_centric_framework_for_research_in_planning-quantumgis.gif!</td></tr>
+</table>
+
+h5. 3D Spatial Access Tools
+
+During the last years tools like Nasa Worldwind (NASA, 2006), Google Earth (Google, 2009), and Microsoft VirtualEarth (Microsoft Corporation, 2008) have gained a lot of popularity. These geo-browsers allow not only plotting two dimensions of geo-spatial information, but take into account altitude - thus realistically representing the surface of the earth. These tools also don’t project the information into a flat plain, but map the information at hand onto a sphere. This minimizes distortions for instance of a view of distant mountains. In addition to being able to load traditional GIS datasets (raster and vector) as they are commonly used in geography and planning applications, these tools also support the visualization of 3D models as they are known to architectural offices. Architectural models are usually not geo-referenced and are built in a local coordinate system.  This allows the different disciplines to merge in one visualization platform. How data is sent to the geo-browsers differs from software to software, but Google submitted their markup language KML (Keyhole Markup Language) to the Open Geospatial Consortium as a suggestion for a new standard (Open Geospatial Consortium, 2009d). In April of 2008 this proposal was accepted and is now a standard that is widely accepted. In order to make full use of the 3-D features a middleware was developed that can take information out of tables and generate 3D visualizations (e.g. Figure 5). Microsoft Virtual Earth and Google Earth are also able to stream 3D-Buildings into a scene. However the functionality is very restricted. For instance in Google Earth it is not possible to omit only specific buildings in case one would like to put an own building into place. Therefore the urban systems framework’s KML generator has also the ability to stream 3-D objects on the fly from the database. This is especially interesting if one would like to illustrate
+
+<table>
+	<caption>Figure 6: Example Pandemic Flu, the model illustrates fatalities in different counties of Arizona over time, the model was developed by the ASU Decision Theater (Araz, Lant, Fowler, & Jehn, 2009)</caption>
+	<tr><td>!a_data_centric_framework_for_research_in_planning-flu.gif!</td></tr>
+</table>
+
+different planning scenarios in a richly textured scene. Figure 6 shows a study at what is now the last light-rail stop in Mesa, AZ. The model is used to analyze views from the adjacent neighborhood and the street and it is used to look at the density of the area that is necessary to support the light rail. The whole scene is generated on the fly out of the database. On the right hand side in red are extruded polygons. The neighborhood in the background uses a point dataset to insert generic houses. The trees are auto generated from a line and the amount of trees required. The scene is generated in PHP scripting. The concept is basically to have a setup script which describes the scene and generates the appropriate KML. The KML file is served in a network link (one kml that points to another). This allows refreshing the scene fairly rapidly.
+
+One more tool needs to be highlighted with regard 3-D visualization. Although you can move down to eye level and then through the scene the immersive effect is fairly low, because Google Earth is not built to be shown on a single flat display. Although it is possible to stretch it over a couple of displays the perspective distortion is high. To overcome these limitations we have integrated the ability to stream the dataset into an open source GIS – MinervaGIS developed at Arizona State University (ASU, 2009) that is able to view the scene in an immersive multi-screen visualization. Figure 7 depicts the presentation of a master-plan
+
+<table>
+	<caption>Figure 7: Density study at a light rail stop in Mesa, AZ. Model developed at the ASU Decision Theater in cooperation with the ASU Stardust Center.</caption>
+	<tr><td>!a_data_centric_framework_for_research_in_planning-light_rail.gif!</td></tr>
+</table>
+
+development at the Phoenix-Mesa Gateway Airport. It uses the same basic-framework but studies the noise impact of the airplanes in relation to planned residential zones (high density urban living). It shows that the screens actually wrap around the audience, giving them an immersed feeling and a better way of judging proportions and distances. This image shows also a work setup that allows for constructive, collaborative work and visioning sessions. Minerva can be used simultaneously with other tools (like Google Earth) so people at different locations can look at the same information than what is displayed in the drum.
+
+<table>
+	<caption>Figure 7: Immersive visualization inside the ASU Decision Theater's Drum with Minerva</caption>
+	<tr><td>!a_data_centric_framework_for_research_in_planning-minerva.gif!</td></tr>
+</table>
+
+h5. Web-Access Tools
+
+An additional level of distributed visualization and access is given with tools that work within a web-browser. 
+
+<table>
+	<caption>Figure 8: Website based on OpenLayers showing only the street objects (e.g. cars and people) on a 2-D map using the data from the visualization in Figure 6</caption>
+	<tr><td>!a_data_centric_framework_for_research_in_planning-website.gif!</td></tr>
+</table>
+
+There are many other tools that could be used e.g. Google Maps, or kaMap! to show information in 2-D. However it is also possible to get a 3-D view inside a browser window using Microsoft Virtual Earth or the Google Earth Plugin.
+
+Additional websites that are in available at the moment are websites to upload different types of datasets. The importers support at the moment text files with comma separated values (.csv) to import tabular data, shape- (.shp) and KML-files (.kml) to load points, lines and polygons, KMZ-files (.kmz) or collada-files with a geo-location as file name to load 3D models. There is also a webpage that can load various geo-referenced image formats that can be used by the UMN map-server (see Figure 2) and another one to access the meta-data. Text, videos, tables and images can be ingested using the typo3-backend. Finally there are web-based tools like phpMyAdmin available that provide low level database access though a web-browser. It shows the rich variety of web-based tools that is available for planners and collaborators to share information and collaborate on projects even from distant locations.
+
+h2. 4. Discussion and Outlook
+
+In this paper we present a highly flexible framework for research in planning and urban design. The examples given in Figures 3 to 8 and thought the text illustrate many different applications and projects that it was successfully employed. There were very good experiences having students work with the framework without a lot of training. They are quickly able to pick up the tools they like best and use the framework in innovative ways. For instance the model in 6 was put together by 2 students in two weeks without prior knowledge of the USF.
+
+However, several components of the framework need to be optimized. For instance, at the moment the KML generator creates one KML-file that afterwards gets submitted over the internet to the visualization tool of choice. For files with a large number of polygons that means a considerable amount of time until the visualization is shown. The next logical step is to stream the objects in small groups or, depending on the size of s single object, one by one, thus the visualization can already start, even with a scene is only partially loaded. Another area of great potential is the parallelization to increase the speed of database queries. Many attempts have been made to create generic databases that can handle geospatial data across a computing cluster. Due to constraints in the order of the execution of commands in a database there are no generic models that will accelerate all types of queries. However, for specific, often used queries it seems to be possible to obtain high performance gains with a partially parallelized GIS-database.
+
+Another aspect that could use refinement is the way scenarios are built. At the moment that is still a relatively labor intensive process. The use of specialized modules to prepare data in different ways could optimize and speed up the process of scenario building.
+
+Another plan for improvement is directed towards the export of datasets out of the framework. Since it supports so many different tools it is already possible to export the data in many different formats. However, sometimes it is difficult or very expensive to by specialized conversion software (for instance to convert Collada models into a 3-D Studio Max file).
+
+Finally there is an observation that many engineering and consulting firms, cities and researchers are interested in working with this framework in their practice.
+
+5. References
+
+Araz, O., Lant, T., Fowler, J., & Jehn, M. (2009). A Quantitative model for effects of school closure and travel restrictions on mitigating the disease outbreaks. Working paper, Arizona State University .
+
+ASU. (2009). Minerva Home. Retrieved 01 16, 2009, from MinervaGIS Website: http://www.minervagis.org/
+
+ESRI. (2009a). ArcGIS SDE. Retrieved 01 16, 2009, from ESRI Website: http://www.esri.com/software/arcgis/arcsde/index.html
+
+ESRI. (2009b). System Requirements for ArcSDE. Retrieved 01 16, 2009, from ESRI Website: http://support.esri.com/index.cfm?fa=knowledgebase.systemRequirements.matrix&pName=ArcSDE&productID=19&pvName=9.1&versionID=100&PID=19&PVID=283
+
+Google. (2009). Google Earth Download Page. Retrieved 01 12, 2009, from Google Website: http://earth.google.com/
+
+Huang, F., Liu, D., Liu, P., Wang, S., Zeng, Y., Li, G., et al. (2007). Parallel GRASS (Research On Cluster-Based Parallel GIS with the Example of Parallelization on GRASS GIS). Sixth International Conference on Grid and Cooperative Computing (pp. 642-649). IEEE.
+
+Khronos Group. (2009). COLLADA - 3D Asset Exchange Schema. Retrieved 01 18, 2009, from Khronos Group Website: http://www.khronos.org/collada/
+
+Microsoft Corporation. (2008). Microsoft VirtualEarth. Retrieved 01 12, 2009, from Microsoft Website: http://www.microsoft.com/virtualearth/
+
+NASA. (2006, 10 16). Retrieved 01 13, 2009, from National Aeronautics and Space Administration Website: http://worldwind.arc.nasa.gov/
+
+Obtuse Software, LLC. (2008). Retrieved 01 13, 2009, from Obtuse Software Website: http://pub.obtusesoft.com/
+
+Open Geospatial Consortium. (2009a). Retrieved January 15, 2009, from OGC Website: http://www.opengeospatial.org/
+
+Open Geospatial Consortium. (2009d). OGC KML. Retrieved 01 13, 2009, from OGC Website: Open Geospatial Consortium, Inc
+
+Open Geospatial Consortium. (2009c). OpenGIS Catalogue Service Implementation Specification. Retrieved 01 16, 2009, from OGC Website: http://www.opengeospatial.org/standards/cat
+
+Open Geospatial Consortium. (2009b). Simple Feature Access - Part 2: SQL Option. Retrieved 01 18, 2009, from OGC Website: http://www.opengeospatial.org/standards/sfs
+
+Postgres Global Development Group. (2009). PostGres Webpage. Retrieved 01 16, 2009, from http://www.postgresql.org/
+
+Powersim Software AS. (2009). Retrieved 01 16, 2009, from PowerSim Website: http://www.powersim.com/
+
+Quantum GIS Community. (2009). Retrieved 01 16, 2009, from QuantumGIS webpage: http://www.qgis.org/
+
+Refractions Research. (2009). Retrieved 01 13, 2009, from PostGIS Website: http://postgis.refractions.net/
+
+Refractions Research. (2008). uDig : Home. Retrieved 01 13, 2009, from Refractions Research: http://udig.refractions.net/
+
+TYPO3 Association. (2009). Retrieved 01 16, 2009, from TYPO3 Website: http://www.typo3.org/
+
+Waddell, P., Ševčíková, H., Socha, D., Miller, E., & Nagel, K. (2005). Opus: An Open Platform for Urban Simulation. Computers in Urban Planning and Urban Management Conference. London,U.K.
+
+Wikipedia. (2009, January 13). Geographic Information System. Retrieved January 13, 2009, from http://en.wikipedia.org/wiki/GIS
+
+p{text-align:center}. Conference Topic: Cross cutting themes
+
+p{text-align:center}. Keywords: Information management, computing framework, internet, GIS, simulation, collaboration

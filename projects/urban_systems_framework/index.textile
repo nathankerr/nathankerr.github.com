@@ -1,0 +1,17 @@
+---
+title: Urban Systems Framework
+layout: default
+---
+h1. Urban Systems Framework
+
+h2. "A data centric framework for research in planning":a_data_centric_framework_for_research_in_planning.html
+
+March 2009.
+
+In this paper we report about the Urban Systems Framework (USF) that was developed within the Digital Phoenix project at Arizona State University. Digital Phoenix is an effort to create a planning tool that allows keen insight into urban dynamics in the Phoenix metropolitan area through the use of state-of-art visualization, simulation, and GIS tools, combined with detailed social, economic and environmental data. These goals are only achievable in a collaborative interdisciplinary research approach. This approach led to several technological challenges during the course of the research:
+
+# Storage and organization of the data that researchers and collaborators need for their work
+# Automation of data processing, conversion, and automated execution of simulations
+# Interoperability for collaboration and distribution of result sets
+
+The framework that we present in this paper addresses these challenges. It is built on a data centric workflow, allows the use of many freely available software tools due to the use of open standards, and supports collaboration with internet based infrastructure.
