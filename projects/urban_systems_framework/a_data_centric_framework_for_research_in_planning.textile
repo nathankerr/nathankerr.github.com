@@ -49,6 +49,7 @@ The Urban Systems Framework (USF) is designed to organize and store the wide var
 The USF framework is composed of two main parts. On one hand, it is a logical structure that allows handling diverse data sets in a concise fashion. On the other hand, it consists of a substantial set of tools that use a client/server paradigm to enable generic database and GIS functions (Wikipedia, 2009). It also provides enhanced methods for visualization, hookups to simulation tools, and supports web-access tools that allow working on datasets in a distributed fashion.
 
 h3. 3.1. Logical Structure
+
 h4. 3.1.1. Data-centric Workflow
 
 The logical structure is built around a data-centric workflow. Figure 1 shows how the data is stepped through the framework. In step one data the data is loaded into the database (please refer to the tools section). This data could come from all kinds of sources like assessor, census or private companies that offer datasets. However, these datasets are normally not yet ready for use. Often the data has to be corrected in a labor intensive step. Once the data has been corrected and there is trust in the accuracy of the dataset it is considered clean data and is ready to be used. The initial data (as received from the sources) is still stored for reference.
@@ -126,10 +127,12 @@ Depending on the size of the datasets and the type of geospatial operations quer
 GRASS (Geographic Resources Analysis Support System) is a GIS tool like ArcGIS or Quantum GIS managed by the Open Source Geospatial Foundation (osgeo.org) that has a network based mode that allows for multiple users to work together collaboratively on a shared dataset. Huang et al. (2007) took advantage of this multi-user functionality to utilized a high performance cluster environment to process multiple aspects of a dataset concurrently. The main limitation to this scheme is that no single operation will run faster, even though multiple operations could be ran concurrently. This form of parallelization will work no faster than the slowest computation that needs to be completed. Though in some cases this produces acceptable speedup, near-real-time results could not be obtained.
 
 Even though Hunag et al. (2007) were not able to obtain a significant increase in processing speed we are working on scaling the processing across several computers. Basically the idea is to increase the speed for a set of basic queries that can be scaled appropriately in a cluster environment.
-3.2.3. Client-Side Tools
+
+h4. 3.2.3. Client-Side Tools
 
 To access, explore and analyze the datasets a variety of tools is available. On one hand there are tools that are just generic database access tools. These tools do not account for the geospatial nature of some datasets. On the other hand there are tools that can directly visualize the geometry and associated attributes.
-Generic Database Access Tools
+
+h5. Generic Database Access Tools
 
 As soon as the data is in the database all collaborators can access and manipulate the database by means of standard GIS and database tools. The most basic tool is delivered directly with the database. PSQL is a command-line tool that accepts SQL queries that can be executed directly and database management system. A similar tool, but with a graphical user interface is PG-Admin III (citation). PG-Admin allows users to access and edit the database without knowing SQL syntax (Figure 3). These two tools are generic tools to access the database. They have no inbuilt functions to visualize the geospatial datasets. However, both tools are capable to manipulate geospatial data though the extension of the standard SQL command-set. This scripting capability is a powerful means to manipulate data. Especially if data has to be manipulated in the same way over and over again scripting can ensure that the data is always manipulated in the same fashion. An additional advantage is that the script can later be used to retrace the processing steps for validation.
 
