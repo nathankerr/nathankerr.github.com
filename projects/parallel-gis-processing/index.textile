@@ -1,0 +1,9 @@
+---
+title: Parallel GIS Processing
+layout: default
+---
+h1. Parallel GIS Processing
+
+h2. "GIS on Hadoop":gis_on_hadoop.html
+
+Class project on cloud computing. May 2009. Work by Nathan Kerr, Anthony DiGirolamo, and Ashay Rane.

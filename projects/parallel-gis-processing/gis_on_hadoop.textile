@@ -1,0 +1,366 @@
+---
+title: GIS on Hadoop
+layout: comments
+---
+h1. GIS on Hadoop
+
+h2. Team Members
+
+* Nathan Kerr
+* Ashay Rane
+* Anthony DiGirolamo
+
+h2. Problem  Context
+
+Geospatial (GIS) simulation, analysis, and simulation are important
+processes to understanding and improving our environment, both urban
+and natural.
+
+Traditional GIS processing has been done on the desktop with GUI
+applications such as ArcGIS [1], Quantum GIS [2], and GRASS GIS
+[3]. These solutions provide graphical methods to interact with and
+perform predefined operations on a set of data. Quantum GIS and GRASS
+GIS are open source, and thus fully extensible. ArcGIS supports plugins,
+enabling developers to increase the library of operations available. The
+main problem with using these environments in scientific analysis is the
+lack of traceability of what was done. The entire burden of documenting
+what steps were followed lays entirely on the scientist. Furthermore, the
+storage and computing capabilities are limited to a single computer, and
+often to a single processor. Thus the capabilities of these environments
+to handle large datasets and complex computation are severely limited.
+
+In the Digital Phoenix project, student workers were used to handle the
+GIS processing. As with most student worker positions there was fair
+amount of turnover, with severe losses of processing knowledge every
+time. Because the processing was done through a GUI, and because the
+students doing the processing did not documents the processes, knowledge
+of how datasets were transformed was lost. In addition, the resulting
+files were usually transferred by email and stored in some arbitrary
+manner such that there was no method of determining what file was the
+final result, or even what was in each file.
+
+Some of the traceability problems could be solved by writing programs to
+do the transformation. Saving these programs and documenting which one
+was used to do the transformation would provide the traceability without
+requiring an overwhelming amount of extra-process documentation. Several
+programming libraries exist such as the Java Topology Suite (JTS)
+[4] and the GEOS [5] library which provide geometric data types and
+processing methods. While these libraries are useful, they are merely
+a basis for some more advanced environment for two reasons. First, the
+people driving the analysis and simulation work are not programmers. Thus
+any environment they use must be simple enough to not create a large
+barrier for them. Second, simple programs still leave the file transfer
+problem in place.
+
+To provide a simple programming environment and to centralize storage
+and access, Digital Phoenix started using a database to handle both
+processing and storage. PostGIS [6], which is the open source PostgreSQL
+[7] database with geospatial extensions) was chosen because of its
+ability to integrate with the traditional desktop GIS programs and its
+ability to store and process GIS information. With a little training, the
+student worker responsible for GIS processing was able to learn enough
+SQL to handle the processing needs of Digital Phoenix. The workflow of
+Digital Phoenix changed for the better because of this addition. As a
+data manipulation process was developed over time, both the processor
+and the process drivers were able to see exactly what was done and were
+able to access the resulting datasets immediately with little confusion
+over which version was what.
+
+The main problem with using PostGIS to handle the processing is
+its limitation to scale a computation over multiple processors and
+multiple computers. Development flow was limited by slow turn-arounds
+on computation utilizing full datasets. Some development could be
+done on subsections of the datasets, but not all problems were found
+in the subsection used and only were discovered while using the full
+dataset. Speeding up the computation time would have drastically improved
+the efficiency of data processing by improving the feedback loop in the
+development phase.
+
+To speed up the processing time, a solution that utilizes more than one
+computer to execute the required computation is needed.
+
+h2. Project Objective
+
+This project developed a method of processing geospatial data in the
+Hadoop environment enabling scalable geospatial analysis and simulation.
+
+This project takes as a sample problem one that was experienced by the
+Digital Phoenix group: associating jobs with the closest parcel of land
+that supports the job type. For the purposes of this project, the query
+uses simplified criteria for matching job type to land use type.
+
+This problem maps well to the Map/Reduce paradigm, and gives an idea of
+how well GIS processing works using Hadoop. Comparisons are made with
+the processing and development times using PostGIS and Hadoop. The same
+algorithm cannot be used because of the differing paradigms of the two
+environments. However, the processing done is the same.
+
+h2. Related Work
+
+Besides Hadoop, other methods could be used to speedup GIS processing
+times.
+
+Other database solutions exist to handle GIS processing such as Oracle
+Spatial [8], and MySQL spatial [9].
+
+Databases that execute queries in parallel across multiple computers
+exist. Oracle RAC [10]  with the Oracle Spatial extensions is one such
+example. Access to these database systems is mainly limited by money,
+as they start at around $20,000/processing core for the software. David
+DeWitt and Jim Gray argue that  parallel databases are the future of
+data processing and storage [11] . Should such a system be available to
+the GIS researchers, the SQL developed for a single computer version,
+for instance on the researcher's desktop on a subset of the data, would
+then easily run on the full dataset with appreciable speedup.
+
+The database group at University of Wisconsin-Madison had built a scalable
+geospatial database, Paradise [12], strictly for research purposes. The
+database was built upon Shore [13], a scalable, high-performance,
+persistent object repository. Paradise was built in two phases. The
+first was a client-server GUI interface [14].
+
+[15] describes a method of utilizing the collaboration capabilities
+of GRASS GIS to distribute sub-queries amoung computers. The very
+existence of this paper shows the lack of penetration of parallel GIS
+capable databases. Because the databases aren't known about or are
+too expensive to be utilized, other solutions are being sought. The
+method described in this paper utilizes multiple instances of GRASS in
+a master-slave configuration where all participants access a shared data
+repository or filesystem. The geometries are portioned between the various
+nodes. Operations are done on the subsets, and the results are merged
+to produce the final result.This methodolgy is very much like Map/Reduce.
+
+h2. Description of the Dataset 
+
+<table>
+	<caption>Figure 1: An illustration of land parcels and locations of employment.</caption>
+	<tr><td>!gis_on_hadoop-dataset.png!</td></tr>
+</table>
+
+There are two datasets. Both datasets focus on Maricopa County and
+are currently stored in a PostGIS database. The first is a set of
+point data representing location of employers and the classification
+of the job type. The dataset is from census data and has around 34,000
+rows. The second dataset is polygon data representing parcels of land
+with associated zoning information. It is from assessor's data and has
+around 1.2 million rows.
+
+These datasets are like most GIS datasets in that they associate a group
+of attributes to a piece of geolocated geometry.
+
+h2. Algorithm Used
+
+By creating a generic GIS datatype in Hadoop, GIS problems that look like
+search or analysis problems that work well in a Map/Reduce environment
+will work well. The primary objectives that went into consideration
+while developing this datatype were that it be easily extensible and
+that Mappers and Reducers get a "ready" GIS datatype without them have
+to perform any other work such as reading from files or parsing strings.
+
+h3. Text representation of GIS datatype
+
+Hadoop is known to support text well, i.e. it handles quick distribution
+of text data among mappers and also ensures good load balancing when
+dealing with text. The smallest unit of text that Hadoop deals with,
+by default, is a single line of text. Hence, at its very core, the GIS
+datatype is represented by a single line of text. We believe that any GIS
+object can be represented in terms of a Geometry object along with a set
+of attributes that describe the GIS object. Our use of the Java Topology
+Suite permits us to use Geometry objects and strings (in a specific format
+called "Well-Known Text") interchangeably. Attribute data is comprised
+of either integers, floats or strings. Thus attribute information can
+also be easily represented in strings. Thus, for the outside world, the
+GIS datatype is represented as a list of attributes separated by commas
+in a Comma-Separated-Values (CSV) file. For the sake of generality, the
+text representation of the Geometry object is just one of the attributes.
+
+A sample line of text that represents the GIS object is:
+
+pre. "4","4","4","141.00000","Behavior Research Center Inc","Rocky Mountain Poll","1101 N 1st Street","","Phoenix","PH","AZ","850041803", "POINT(-112.07248693274 33.4599315579762)" 
+
+Notice that the names of the attributes have not been included in the
+data. The reason is that understanding the sequence of attributes need
+not be done once per construction of a GIS datatype but instead just once
+per Mapper object. Hence this sequence os stored in a separate file that
+is read by each mapper. An example column sequence file may look like:
+
+pre.. id
+emp01_
+emp01_id
+empid
+name1
+name2
+address
+suite
+city
+citycode
+state
+zipcode
+the_geom 
+
+p. Thus dealing with the GIS datatype requires passing the name of the
+data file to the GISInputFormat class and adding the column file to the
+Hadoop Distributed Cache. Each mapper then receives a single GIS datatype
+as its input.
+
+h3. Data flow:
+
+CSV file to Mapper: The GISRecordReader class is at the core of
+reading the GIS datatype from the CSV file. This, in turn, uses the
+LineRecordReader class to read a line of text from the CSV file on the
+Hadoop Distributed File System (HDFS). The line of text is then parsed
+and a GIS datatype is constructed from it and fed to a Mapper.
+
+Mapper to Reducer: To be able to pass a datatype from a Mapper
+to a Reducer, the datatype has to support the Hadoop Writeable
+interface. This interface is a way to implement serialization in
+Hadoop. More specifically, the datatype has to support two methods
+(`write' and `readFields') that perform the conversion between Text and
+the GIS datatype.
+
+Reducer to CSV file: This requires converting the GIS datatype to Text
+in a similar manner and format to the CSV file used while feeding the
+Mapper with GIS data. This is performed by the GISRecordWriter class.
+
+The problem query largely happens in the Map phase with each mapper
+taking a job and finding the closest parcel. The Reduction phase merely
+outputs the results from the mappers.
+
+h2. Experimental Setup
+
+The test environment consisted of a Hadoop cluster that is setup
+on-demand. This form of on-demand Hadoop is executed using the Torque
+batch queue system on the Saguaro cluster of computers at Arizona State
+University. This allows for Hadoop to be spawned at any time using a
+variable amount of nodes. Additionally, each node used is part of the
+HDFS storage where our datasets must first be loaded before computation
+can begin.The nodes used were quad-core, dual socket 2.66GHz Intel Xeon
+processors (Clovertowns) with GigE interconnects.
+
+Two datasets were used, small and large. The small dataset contains
+672 jobs and 5,175 land parcels. The second dataset is much larger,
+containing 34,302 jobs and 1,218,130 land parcels. Geometries were stored
+in latatude/longitute and not projected.
+
+To eliminate any hardware differences, PostGIS was run in the same
+on-demand manner as Hadoop using the same hardware configuration. To
+measure the speed of PostGIS, we chose an initial version of the SQL
+query (PostGIS #1) to execute on the small dataset.  This version has
+a very poor run time of 55 hrs as it compares every job with every
+land parcel to determine if there is a close match. A second version
+of this SQL query (PostGIS #2) was developed that limits the number of
+comparisons by comparing jobs with land parcels within a certain distance
+(0.05 degrees). This reduced the run time to about 6 hours.
+
+Hadoop was tested by using the large dataset on a variable number of
+nodes. Using a 1 MB file split on the dataset, Hadoop allocated 14
+mappers to the task. We executed this job on three, seven, and fourteen
+nodes to eliminate the possibility of I/O contention.
+
+By default, the chunk size used by Hadoop to split files across nodes is
+64 MB. This not only influences the number of splits but also the number
+of mappers (and thus the parallelism). Hence this split size was changed
+to 1 MB, thus resulting in 14 mappers. Also, each node on the Saguaro
+cluster has 2 GB RAM available to each core and hence the maximum heap
+size per Java task was set to 1.9 GB. This was necessary to fit all parcel
+data into memory for comparison. Similarly, to make full utilization of
+the available nodes on Saguaro (each of which have 8 cores), the maximum
+number of mappers per node was set to 8, instead of the default 2.
+
+h2. Results
+
+For testing the usefulness of the Hadoop approach against that of
+traditional methods such as using databases, we compared our solution
+with PostGIS. Figure 2 shows a run time comparison between PostGIS and
+Hadoop on the small dataset. Hadoop takes longer to execute due to some
+initial startup time for the Hadoop job.
+
+<table>
+	<caption>Figure 2: Comparing run time processing of a small dataset in PostGIS and Hadoop.</caption>
+	<tr><td>!gis_on_hadoop-small_results.png!</td></tr>
+</table>
+
+Figure 3 and the tables below give run times for each test case on the large dataset.
+ 
+|_. Method |_. Execution Time |
+| PostGIS #1 | 55 hours |
+| PostGIS #2 | 6.1 hours |
+| Hadoop (3 nodes) | 40 minutes |
+| Hadoop (7 nodes) | 34 minutes |
+| Hadoop (14 nodes) | 29.5 minutes |
+
+ 
+|_. Component/Method |_. Development Time |_. Time to Solution |
+| GIS Datatype | 60 hours | - |
+| Mapper/Reducer | 2 hours | 62.67 hours |
+| PostGIS #1 | 6 hours | 61 hours |
+| PostGIS #2 | 6 hours | 18.1 hours |
+
+<table>
+	<caption>Figure 3: Comparing run time processing of a large dataset in PostGIS and Hadoop using different number of compute nodes.</caption>
+	<tr><td>!gis_on_hadoop-large-results.png!</td></tr>
+</table>
+
+h2. Conclusion:
+
+In this project we have implemented a way to run GIS queries using the
+Hadoop Map/Reduce framework. One of the main goals was to keep the design
+of the solution simple and extensible. We designed and implemented
+the GIS datatype in a way that allows easy integration into other
+Hadoop-based GIS projects. Finally we compared our solution to another
+that was based on using PostGIS. The results showed that Hadoop fares
+well for large datasets. With Hadoop it becomes possible to exploit
+parallelism available via multiple computers/nodes. More importantly,
+the distributed nature of Hadoop makes it possible to spread the data
+across multiple nodes and thus solve a larger problem easily.
+
+The GIS datatype currently supports supplying GIS objects to the mappers
+and reducers. However, adding another set of GIS objects requires the
+user to set up the job configuration, add files to the distributed
+cache and parse the files to form GIS datatypes. In short, the native
+interface is exposed in this process. Instead, it would help to have a
+cleaner interface to add additional sets of GIS data.
+
+An interesting point to note is the large difference in time to develop
+the algorithms. The SQL queries took substantially more time and expertise
+to develop than then Map/Reduce implementation. In addition the Map/Reduce
+implementation was fairly naive and simple.
+
+The problem solved here is fairly generic and hence it can be used
+in a variety of geo-spatial situations. A few examples are: finding
+the hospitals closest to localities or locating the warehouse or
+distribution centers closest to a set of manufacturing units. We believe
+a Map/Reduce approach to geospatial information system computing is a
+viable alternative to existing solutions.
+
+h2. Bibliography
+
+[1] http://www.esri.com/software/arcgis/
+
+[2] http://www.qgis.org/
+
+[3] http://grass.itc.it
+
+[4] http://www.vividsolutions.com/jts/jtshome.htm
+
+[5] http://trac.osgeo.org/geos/
+
+[6] http://postgis.refractions.net/
+
+[7] http://postgresql.org
+
+[8] http://www.oracle.com/technology/products/spatial/index.html
+
+[9] http://www.mysql.com/
+
+[10] http://www.oracle.com/technology/products/database/clustering/index.html
+
+[11] David DeWitt and Jim Gray. Parallel database systems: the future of high performance database systems. Communications of the ACM, June 1992, Vol. 35, No. 6, pages 85-98.
+
+[12] http://www.cs.wisc.edu/paradise/paradise.html
+
+[13] http://www.cs.wisc.edu/shore/
+
+[14] David Dewitt, et al. Client-Server Paradise. Proceedings of the 20th VLDB Conference. Pages 558-569. 1994.
+
+[15] Fang Huang, et al. Research On Cluster-Based Parallel GIS with the Example of Parallelization on GRASS GIS. Grid and Cooperative Computing, 2007. GCC 2007. Sixth International Conference on. August 2007, pages 642-649.

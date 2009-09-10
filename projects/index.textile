@@ -4,4 +4,6 @@ layout: default
 ---
 h1. Projects
 
-Projects list, etc. to go here.
+h2. "Parallel GIS Processing":/projects/parallel-gis-processing
+
+Methods of processing GIS data using Hadoop, MPI, and databases
