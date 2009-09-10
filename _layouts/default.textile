@@ -5,16 +5,10 @@
 	<title>
 		{% if page.title %}
 			{{ page.title }} -
-		{% elsif post.title %}
-			{{ post.title }} -
 		{% endif %}
 		Nathan Kerr
 	</title>
-	<style type="text/css">
-		#nav { border-bottom: 1px solid }
-		#nav a { text-decoration: none }
-		body { margin-left: 2em; margin-right: 2em }
-	</style>
+	<link rel="stylesheet" href="/base.css" type="text/css">
 </head>
 <body>
 <p id="nav">
@@ -22,6 +16,8 @@
 	| <a href="/about">About</a>
 	| <a href="/projects">Projects</a>
 </p>
+
+<h1 id="title">{{ page.title }}</h1>
 
 {{ content }}
 

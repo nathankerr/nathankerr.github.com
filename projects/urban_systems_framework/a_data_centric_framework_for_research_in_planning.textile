@@ -2,8 +2,6 @@
 title: A data centric framework for research in planning
 layout: comments
 ---
-h1. A data centric framework for research in planning
-
 (In proceeding of UPE8, March 2009)
 
 Robert Pahle and Nathan Kerr

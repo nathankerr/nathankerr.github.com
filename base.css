@@ -1,0 +1,12 @@
+body {
+	margin-left: 2em;
+	margin-right: 2em;
+	font-family: 'Helvetica', sans-serif;
+}
+
+#nav {
+	border-bottom: 1px solid;
+}
+#nav a {
+	text-decoration: none
+}
