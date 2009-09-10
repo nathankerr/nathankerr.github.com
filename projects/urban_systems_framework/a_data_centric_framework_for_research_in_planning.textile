@@ -40,7 +40,7 @@ Planning decisions have often far-reaching effects on the complex systems of our
 
 h2. 2. Other frameworks
 
-The Open Platform for Urban Simulation (OPUS) is an urban simulation programming environment that most notably hosts the UrbanSim models (Waddell, &Scaron;ev&#x10D;&iacute;kov&aacute;, Socha, Miller, & Nagel, 2005). Implemented in Python, OPUS is designed as a real-time and batch environment for designing and then running urban simulations. While data can be stored in OPUS, it caches datasets and is meant as simulation workspace instead of a data repository.
+The Open Platform for Urban Simulation (OPUS) is an urban simulation programming environment that most notably hosts the UrbanSim models (Waddell, &Scaron;ev&ccaron;&iacute;kov&aacute;, Socha, Miller, & Nagel, 2005). Implemented in Python, OPUS is designed as a real-time and batch environment for designing and then running urban simulations. While data can be stored in OPUS, it caches datasets and is meant as simulation workspace instead of a data repository.
 
 h2. 3. Urban Systems Framework
 
@@ -237,7 +237,7 @@ Refractions Research. (2008). uDig : Home. Retrieved 01 13, 2009, from Refractio
 
 TYPO3 Association. (2009). Retrieved 01 16, 2009, from TYPO3 Website: http://www.typo3.org/
 
-Waddell, P., &Scaron;ev&#x10D;&iacute;kov&aacute;, H., Socha, D., Miller, E., & Nagel, K. (2005). Opus: An Open Platform for Urban Simulation. Computers in Urban Planning and Urban Management Conference. London,U.K.
+Waddell, P., &Scaron;ev&ccaron;&iacute;kov&aacute;, H., Socha, D., Miller, E., & Nagel, K. (2005). Opus: An Open Platform for Urban Simulation. Computers in Urban Planning and Urban Management Conference. London,U.K.
 
 Wikipedia. (2009, January 13). Geographic Information System. Retrieved January 13, 2009, from http://en.wikipedia.org/wiki/GIS
 
