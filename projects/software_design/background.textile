@@ -1,0 +1,17 @@
+---
+title: Software Design Background
+layout: comments
+date: September 2009
+---
+
+h1. NOTE: THIS DOCUMENT IS NOT COMPLETE
+
+Software design in general is a very subjective process. This means the design produced is highly dependent on the skill and knowledge of the designer. Evaluating such designs is problematic. A prescriptive design method would allow all designers to produce a similar design that is not dependent on their knowledge of the problem domain, but of the design domain. Here I look at two papers that presented methodologies to produce such a design.
+
+h2. Program Development by Stepwise Refinement
+
+h2. Bibliography
+
+[1] Wirth, N. 1971. Program development by stepwise refinement. Commun. ACM 14, 4 (Apr. 1971), 221-227. http://doi.acm.org/10.1145/362575.362577
+
+[2] Jackson, M.A. 1981. A System Development Method. Tools and notions for program construction: An advanced course; Nice 1981; pages 1-25; Cambridge University Press, 1982.

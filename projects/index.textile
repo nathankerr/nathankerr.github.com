@@ -4,8 +4,12 @@ layout: default
 ---
 h2. "Parallel GIS Processing":/projects/parallel-gis-processing
 
-Methods of processing GIS data using Hadoop, MPI, and databases
+Methods of processing GIS data using Hadoop, MPI, and databases.
 
 h2. "Urban Systems Framework":/projects/urban_systems_framework
 
-GIS management and processing environment
+GIS management and processing environment.
+
+h2. "Software Design":/projects/software_design
+
+Recomposed notes and thoughts on software design resulting from a course I am taking._

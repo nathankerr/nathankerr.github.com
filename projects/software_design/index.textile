@@ -1,0 +1,10 @@
+---
+title: Software Design
+layout: default
+---
+
+These are notes and thoughts on software design initially resulting from a course I am currently taking (Fall 2009). Raw(ish) notes are shared via "evernote":http://www.evernote.com/pub/alaster/software_design/.
+
+h2. "Background":background.html
+
+Start of software design including Jackson Structured Design and Program Decomposition.
