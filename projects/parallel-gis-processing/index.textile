@@ -6,7 +6,7 @@ h2. "GIS on Hadoop":gis_on_hadoop.html
 
 Class project on cloud computing. May 2009. Work by Nathan Kerr, Anthony DiGirolamo, and Ashay Rane.
 
-h2. "Alternative Approaches to Parallel GIS Processing":alternative_implementations_of_parallel_gis_processing.html
+h2. "Alternative Approaches to Parallel GIS Processing":alternative_approaches_to_parallel_gis_processing.html
 
 M.S. Thesis. December 2009. Work by Nathan Kerr.
 
