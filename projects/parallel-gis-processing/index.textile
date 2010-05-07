@@ -5,3 +5,13 @@ layout: default
 h2. "GIS on Hadoop":gis_on_hadoop.html
 
 Class project on cloud computing. May 2009. Work by Nathan Kerr, Anthony DiGirolamo, and Ashay Rane.
+
+h2. "Alternative Approaches to Parallel GIS Processing":alternative_implementations_of_parallel_gis_processing.html
+
+M.S. Thesis. December 2009. Work by Nathan Kerr.
+
+Geospatial Information Systems (GIS) were designed to model the world. With the growth and data and increasing sophistication of analysis and processing techniques the traditional methods of performing GIS processing on desktop computes is insufficient.
+
+This thesis evaluates the map reduce and message passing paradigms of parallel programing in the context of GIS processing. This is accomplished by implementing two sets of operations, one using Hadoop and the other using the Message Passing Interface (MPI) standard. These implementations are then evaluated for speedup and usability. PostGIS is used to represent desktop GIS processing.
+
+Two categories of operations were discovered. Record level operations, or operations that work with only one dataset run most quickly in PostGIS and are easy to implement. Operations requiring two datasets run most quickly with the MPI implementation and are easiest to implement in that environment.
