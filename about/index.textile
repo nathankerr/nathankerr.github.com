@@ -3,7 +3,9 @@ title: About
 layout: default
 ---
 
-I am currently a graduate student at "Arizona State University":http://asu.edu working on a M.S. in computer science, focused in "High Performance Computing":http://hpc.asu.edu.
+I am currently a graduate student at "TU Kaiserslautern":http://www.uni-kl.de in Germany working on a PhD in computer science.
+I work with the "Integrated Communication Systems":http://www.icsy.de on parallel and distributed computing using service oriented architectures and
+grids.
 
 h2. Contact Info
 
