@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Photos - Nathan Kerr</title>
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<style>
+		header {
+			color: rgba(255, 255, 255, 0.6);
+			margin: 0 auto;
+			padding: 10px;
+			text-align: center;
+		}
+		a, a:visited, a:link, a:active, a:hover {
+			text-decoration: none;
+			color: inherit;
+		}
+		body {
+			margin: 0px;
+			padding: 0px;
+			background-color: #000;
+		}
+		div {
+			background: rgb(0,0,0) no-repeat center center;
+			background-size: cover;
+			margin-bottom: 10px;
+			text-align: right;
+			color: rgba(97,97,97,0.85);
+			text-indent: 2em;
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	<a id="name" style="font-size: 200%" href="/">Nathan Kerr</a><br/>
+	<nav>
+		<a href="/projects">Projects</a>
+		| <a href="/photos">Photos</a>
+		| <a href="/about">About</a>
+	</nav>
+</header>
+
+<a href="snow.html"><div style="background-image:url(P1010781.jpg)">Snow</div></a>
+<a href="sky.html"><div style="background-image:url(P1010382.jpg)">Sky</div></a>
+<a href="blooms.html"><div style="background-image:url(P1020673.jpg)">Blooms</div></a>
+<a href="objects.html"><div style="background-image:url(P1010173.jpg)">Objects</div></a>
+<a href="forest.html"><div style="background-image:url(P1010397.jpg)">Forest 1</div></a>
+<a href="forest2.html"><div style="background-image:url(P1010574.jpg)">Forest 2</div></a>
+<a href="forest3.html"><div style="background-image:url(P1020256.jpg)">Forest 3</div></a>
+<a href="forest4.html"><div style="background-image:url(P1020709.jpg)">Forest 4</div></a>
+<a href="forest5.html"><div style="background-image:url(P1020769.jpg)">Forest 5</div></a>
+
+
+<script>
+	header = document.getElementsByTagName('header')[0]
+	source = document.getElementById('name')
+
+	function sizeHeader() {
+		var defaultFontSize = getComputedStyle(document.body).getPropertyValue("font-size")
+		defaultFontSize = defaultFontSize.substr(0,defaultFontSize.length - 2) - 0
+
+		var fontSize = defaultFontSize
+		header.style.setProperty("font-size", fontSize + "px")
+		var maxWidth = window.innerWidth / 3.618
+		var maxHeight = window.innerHeight / 3.618
+		while(source.offsetWidth < maxWidth && header.offsetHeight < maxHeight) {
+			fontSize = fontSize + 1
+			header.style.setProperty("font-size", fontSize + "px")
+		}
+	}
+
+	// debounce from http://michalkuklis.com/blog/2011/06/04/debounce-in-javascript/
+	function debounce(fn, wait) {
+		var timeout = null
+		return function () {
+			clearTimeout(timeout)
+			var args = arguments
+			var ctx = this
+			timeout = setTimeout(function () {
+				fn.apply(ctx, args)
+			}, wait)
+		}
+	}
+
+	function sizePhotos() {
+		photos = document.getElementsByTagName('div')
+
+		var width = window.innerWidth + "px"
+		// var height = window.innerHeight + "px"
+		var height = window.innerHeight/5 + "px"
+		var i = 0
+		while(i < photos.length) {
+			var photo = photos[i]
+			photo.style.setProperty("width", width)
+			photo.style.setProperty("height", height)
+			photo.style.setProperty("font-size", height)
+			i++
+		}
+	}
+
+
+	function resize() {
+		sizeHeader()
+		sizePhotos()
+	}
+
+	window.onresize = debounce(resize,200)
+	resize()
+</script>
+
+<!-- Google Analytics -->
+<script>
+var _gaq = [['_setAccount', 'UA-1960166-2'], ['_trackPageview']];
+(function(d, t) {
+var g = d.createElement(t),
+    s = d.getElementsByTagName(t)[0];
+g.async = true;
+g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g, s);
+})(document, 'script');
+</script>
+
+<!-- Woopra -->
+<script type="text/javascript">
+(function(){
+  var wsc=document.createElement('script');
+  wsc.type='text/javascript';
+  wsc.src=document.location.protocol+'//static.woopra.com/js/woopra.js';
+  wsc.async=true;
+  var ssc = document.getElementsByTagName('script')[0];
+  ssc.parentNode.insertBefore(wsc, ssc);
+})();
+</script>
+</body>
+</html>

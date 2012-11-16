@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Nathan Kerr</title>
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Setting the style:
+		1. Choose the picture
+		2. Select a new header background color from the picure for use behind the header
+		3. Select a new content background color from the picture to use behind the readable content
+		4. Place the header and content to suite the picture
+		5. Adjust the colors in _layouts/comments.textile and _layouts/default.textile
+		6. Profit!
+	-->
+	<style>
+		html { 
+			background: url(photos/P1020764.jpg) no-repeat top center fixed; 
+			background-size: cover;
+		}
+		header {
+			color: rgba(195, 142, 98, 0.9);
+			bottom: 10px;
+			right: 10px;
+			position: fixed;
+			background-color: rgba(29, 33, 36, 0.9);
+			padding: 10px;
+			border-radius: 10px;
+			text-align: center;
+		}
+		header a, header a:visited, header a:link, header a:active header, a:hover {
+			text-decoration: none;
+			color: inherit;
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	<a id="name" style="font-size: 200%" href="/">Nathan Kerr</a><br/>
+	<nav>
+		<a href="projects">Projects</a>
+		| <a href="photos">Photos</a>
+		| <a href="about">About</a>
+	</nav>
+</header>
+
+<script>
+	header = document.getElementsByTagName('header')[0]
+	source = document.getElementById('name')
+
+	function sizeHeader() {
+		var defaultFontSize = getComputedStyle(document.body).getPropertyValue("font-size")
+		defaultFontSize = defaultFontSize.substr(0,defaultFontSize.length - 2) - 0
+
+		var fontSize = defaultFontSize
+		header.style.setProperty("font-size", fontSize + "px")
+		var maxWidth = window.innerWidth / 3.618
+		var maxHeight = window.innerHeight / 3.618
+		while(source.offsetWidth < maxWidth && header.offsetHeight < maxHeight) {
+			fontSize = fontSize + 1
+			header.style.setProperty("font-size", fontSize + "px")
+		}
+	}
+
+	// debounce from http://michalkuklis.com/blog/2011/06/04/debounce-in-javascript/
+	function debounce(fn, wait) {
+		var timeout = null
+		return function () {
+			clearTimeout(timeout)
+			var args = arguments
+			var ctx = this
+			timeout = setTimeout(function () {
+				fn.apply(ctx, args)
+			}, wait)
+		}
+	}
+
+	window.onresize = debounce(sizeHeader,200)
+	sizeHeader()
+</script>
+
+<!-- Google Analytics -->
+<script>
+var _gaq = [['_setAccount', 'UA-1960166-2'], ['_trackPageview']];
+(function(d, t) {
+var g = d.createElement(t),
+    s = d.getElementsByTagName(t)[0];
+g.async = true;
+g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g, s);
+})(document, 'script');
+</script>
+
+<!-- Woopra -->
+<script type="text/javascript">
+(function(){
+  var wsc=document.createElement('script');
+  wsc.type='text/javascript';
+  wsc.src=document.location.protocol+'//static.woopra.com/js/woopra.js';
+  wsc.async=true;
+  var ssc = document.getElementsByTagName('script')[0];
+  ssc.parentNode.insertBefore(wsc, ssc);
+})();
+</script>
+</body>
+</html>

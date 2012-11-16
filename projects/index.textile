@@ -10,6 +10,6 @@ h2. "Urban Systems Framework":/projects/urban_systems_framework
 
 GIS management and processing environment.
 
-h2. "Software Design":/projects/software_design
+h2. "Bookmaker":bookmaker
 
-Recomposed notes and thoughts on software design resulting from a course I am taking._
+Turing PDFs into ready-to-print-and-bind Books

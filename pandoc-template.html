@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html$if(lang)$ lang="$lang$"$endif$>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  $for(author)$<meta name="author" content="$author$" />$endfor$
+  $if(date)$<meta name="date" content="$date$" />$endif$
+  <title>$if(pagetitle)$$pagetitle$ &mdash; $endif$ Nathan Kerr</title>
+  <style>
+  header {
+    border-bottom: 1px solid;
+    margin-bottom: 1em;
+    text-align: center;
+    font-size: 200%;
+  }
+  header a {
+    text-decoration: none;
+    color: #222;
+    display: block;
+    font-size: 50%;
+  }
+</style>
+</head>
+<body>
+
+<div id="main">
+<header>
+  $if(title)$$title$$endif$
+  <a href="/">Nathan Kerr</a>
+</header>
+
+$if(toc)$
+$toc$
+$endif$
+$body$
+</div>
+
+<!-- sizeText -->
+<script>
+var sheet = document.createElement('style')
+document.head.appendChild(sheet)
+
+var widthMetric = document.createElement('span')
+widthMetric.innerHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLM'
+widthMetric.style.display = 'none'
+document.body.appendChild(widthMetric)
+
+var defaultFontSize = getComputedStyle(document.body).getPropertyValue("font-size")
+defaultFontSize = defaultFontSize.substr(0,defaultFontSize.length - 2) - 0
+var fontSize = defaultFontSize
+var deltaFontSize = 0
+
+// Tries to set an optimal font size for reading, 
+// balancing the length of the visible block while
+// maximizing the font-size (starting at whatever
+// document.body has)
+function sizeText() {
+  bodyFontSize = getComputedStyle(document.body).getPropertyValue("font-size")
+  bodyFontSize = bodyFontSize.substr(0,bodyFontSize.length - 2) - 0
+  if (fontSize != bodyFontSize) {deltaFontSize = deltaFontSize + (bodyFontSize - fontSize)}
+
+  // pick the optimal font size
+  fontSize = defaultFontSize
+  widthMetric.style.setProperty("font-size", fontSize + "px")
+  widthMetric.style.display = 'inline'
+  while(widthMetric.offsetWidth < window.innerWidth && widthMetric.offsetWidth < window.innerHeight) {
+    fontSize = fontSize + 1
+    widthMetric.style.setProperty("font-size", fontSize + "px")
+  }
+  fontSize = fontSize + deltaFontSize
+  widthMetric.style.setProperty("font-size", fontSize + "px")
+  maxWidth = widthMetric.offsetWidth
+  widthMetric.style.display = 'none'
+
+  marginWidth = (window.innerWidth - maxWidth) / 2
+  if (marginWidth < 0) {marginWidth = 0}
+  sheet.innerHTML = "body {line-height:1.5; max-width:" + maxWidth + "px; font-size:" + fontSize + "px; margin-left:" + marginWidth + "px; margin-right:" + marginWidth + "px}"
+}
+
+// debounce from http://michalkuklis.com/blog/2011/06/04/debounce-in-javascript/
+function debounce(fn, wait) {
+  var timeout = null
+  return function () {
+    clearTimeout(timeout)
+    var args = arguments
+    var ctx = this
+    timeout = setTimeout(function () {
+      fn.apply(ctx, args)
+    }, wait)
+  }
+}
+
+window.onresize = debounce(sizeText,200)
+// window.onresize = sizeText
+sizeText()
+</script>
+
+</body>
+</html>

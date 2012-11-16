@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		{% if page.title %}
+			{{ page.title }} &mdash;
+		{% endif %}
+		Nathan Kerr
+	</title>
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<style>
+		header {
+			color: rgba(97, 97, 97, 1);
+			margin: 0 auto;
+			padding: 10px;
+			text-align: center;
+		}
+		header a, header a:visited, header a:link, header a:active header, a:hover {
+			text-decoration: none;
+			color: inherit;
+		}
+		body {
+			margin: 0px;
+			padding: 0px;
+			background-color: #000;
+		}
+		div {
+			background: rgb(0,0,0) no-repeat center center;
+			background-size: contain;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	<a id="name" style="font-size: 200%" href="/">Nathan Kerr</a><br/>
+	<nav>
+		<a href="/projects">Projects</a>
+		| <a href="/photos">Photos</a>
+		| <a href="/about">About</a>
+	</nav>
+</header>
+
+{{ content }}
+
+<script>
+	header = document.getElementsByTagName('header')[0]
+	source = document.getElementById('name')
+
+	function sizeHeader() {
+		var defaultFontSize = getComputedStyle(document.body).getPropertyValue("font-size")
+		defaultFontSize = defaultFontSize.substr(0,defaultFontSize.length - 2) - 0
+
+		var fontSize = defaultFontSize
+		header.style.setProperty("font-size", fontSize + "px")
+		var maxWidth = window.innerWidth / 3.618
+		var maxHeight = window.innerHeight / 3.618
+		while(source.offsetWidth < maxWidth && header.offsetHeight < maxHeight) {
+			fontSize = fontSize + 1
+			header.style.setProperty("font-size", fontSize + "px")
+		}
+	}
+
+	// debounce from http://michalkuklis.com/blog/2011/06/04/debounce-in-javascript/
+	function debounce(fn, wait) {
+		var timeout = null
+		return function () {
+			clearTimeout(timeout)
+			var args = arguments
+			var ctx = this
+			timeout = setTimeout(function () {
+				fn.apply(ctx, args)
+			}, wait)
+		}
+	}
+
+	function sizePhotos() {
+		photos = document.getElementsByTagName('div')
+
+		var width = window.innerWidth + "px"
+		var height = window.innerHeight + "px"
+		var i = 0
+		while(i < photos.length) {
+			var photo = photos[i]
+			photo.style.setProperty("width", width)
+			photo.style.setProperty("height", height)
+			i++
+		}
+	}
+
+	function resize() {
+		sizeHeader()
+		sizePhotos()
+	}
+
+	window.onresize = debounce(resize,200)
+	resize()
+</script>
+</body>
+</html>

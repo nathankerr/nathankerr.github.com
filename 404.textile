@@ -1,0 +1,6 @@
+---
+title: Oops!
+layout: default
+---
+
+Some thing went wrong. Try one of the links above.

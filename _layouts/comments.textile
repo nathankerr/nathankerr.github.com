@@ -1,113 +1,60 @@
-<!doctype html>  
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
-
-  <title>
+    <title>
     {% if page.title %}
       {{ page.title }} &mdash;
     {% endif %}
     Nathan Kerr
   </title>
-
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <style>
-    body, select, input, textarea {
-      background-color: #fff;
-      color: #333;
-      text-rendering: optimizelegibility;
+    html { 
+      background: url(/photos/P1020764.jpg) no-repeat top center fixed; 
+      background-size: cover;
     }
-
     header {
+      text-align: center;
       border-bottom: 1px solid;
       margin-bottom: 1em;
-      text-align: center;
     }
-    header a {
+    header a, header a:visited, header a:link, header a:active header, a:hover {
       text-decoration: none;
-      color: #222;
+      color: inherit;
+    }
+    img {
+      max-width: 40em;
+    }
+    pre {
+      overflow: scroll;
+    }
+
+    .content {
+      background-color: rgba(195, 142, 98, 0.9);
+      border-radius: 10px;
+      padding: 10px;
+      max-width: 40em;
+      /*center the content*/
+      /*margin: 0 auto;*/
+      float: right;
+      position: relative;
     }
   </style>
 </head>
-
 <body>
-
-  <!-- sizeText -->
-  <script>
-    function ratio (x, y) {
-      return Math.floor(10*(x / y))
-    }
-
-    var sheet = document.createElement('style')
-    document.head.appendChild(sheet)
-
-    var widthMetric = document.createElement('span')
-    widthMetric.innerHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLM'
-    widthMetric.style.display = 'none'
-    document.body.appendChild(widthMetric)
-
-    var defaultFontSize = getComputedStyle(document.body).getPropertyValue("font-size")
-    defaultFontSize = defaultFontSize.substr(0,defaultFontSize.length - 2) - 0
-    var oldRatio = ratio(window.innerWidth, window.innerHeight)
-    var windowWidth = window.innerWidth
-    var windowHeight = window.innerHeight
-    var zoomed = false
-
-    // Tries to set an optimal font size for reading, 
-    // balancing the length of the visible block while
-    // maximizing the font-size (starting at whatever
-    // document.body has)
-    function sizeText() {
-      if (oldRatio != ratio(window.innerWidth, window.innerHeight)) {
-        // assume that we were not zoomed, update cached values
-        oldRatio = ratio(window.innerHeight, window.innerHeight)
-        windowWidth = window.innerWidth
-        windowHeight = window.innerHeight
-        zoomed = false
-      } else {
-        zoomed = true
-      }
-
-      // pick the optimal font size
-      fontSize = defaultFontSize
-      widthMetric.style.setProperty("font-size", fontSize + "px")
-      widthMetric.style.display = 'inline'
-      maxWidth = windowWidth - (windowWidth * 0.10) // make sure there are margins
-      while(widthMetric.offsetWidth < maxWidth && widthMetric.offsetWidth < windowHeight) {
-        fontSize = fontSize + 1
-        widthMetric.style.setProperty("font-size", fontSize + "px")
-      }
-
-      // place the column of text in the middle and set the font-size
-      marginWidth = ((windowWidth - widthMetric.offsetWidth) / 2) / windowWidth * 100
-      if (marginWidth < 0) {marginWidth = 0}
-      sheet.innerHTML = "body {line-height:1.5; max-width:" + widthMetric.offsetWidth + "px; font-size:" + fontSize + "px; margin-left:" + marginWidth + "%; margin-right:" + marginWidth + "%}"
-
-      widthMetric.style.display = 'none'
-    }
-
-    // debounce from http://michalkuklis.com/blog/2011/06/04/debounce-in-javascript/
-    function debounce(fn, wait) {
-      var timeout = null
-      return function () {
-        clearTimeout(timeout)
-        var args = arguments
-        var ctx = this
-        timeout = setTimeout(function () {
-          fn.apply(ctx, args)
-        }, wait)
-      }
-    }
-
-    window.onresize = debounce(sizeText,200)
-    sizeText()
-  </script>
+<div class="content">
   <header>
-    <a style="font-size: 200%" href="/">Nathan Kerr</a><br/>
-    <a href="/">Blog</a>
-    | <a href="/about">About</a>
-    | <a href="/projects">Projects</a>
+    <a id="name" style="font-size: 200%" href="/">Nathan Kerr</a><br/>
+    <nav>
+      <a href="/projects">Projects</a>
+      | <a href="/photos">Photos</a>
+      | <a href="/about">About</a>
+    </nav>
   </header>
-
+  
   <h1 id="title">{{ page.title }}</h1>
   {{ content }}
 
@@ -151,6 +98,6 @@
       ssc.parentNode.insertBefore(wsc, ssc);
     })();
   </script>
-
+</div>
 </body>
 </html>
