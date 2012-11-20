@@ -29,7 +29,7 @@
 			margin-bottom: 10px;
 			text-align: right;
 			color: rgba(97,97,97,0.85);
-			text-indent: 2em;
+			white-space: nowrap;
 		}
 	</style>
 </head>
@@ -44,15 +44,16 @@
 	</nav>
 </header>
 
-<a href="snow.html"><div style="background-image:url(P1010781.jpg)">Snow</div></a>
-<a href="sky.html"><div style="background-image:url(P1010382.jpg)">Sky</div></a>
-<a href="blooms.html"><div style="background-image:url(P1020673.jpg)">Blooms</div></a>
-<a href="objects.html"><div style="background-image:url(P1010173.jpg)">Objects</div></a>
-<a href="forest.html"><div style="background-image:url(P1010397.jpg)">Forest 1</div></a>
-<a href="forest2.html"><div style="background-image:url(P1010574.jpg)">Forest 2</div></a>
-<a href="forest3.html"><div style="background-image:url(P1020256.jpg)">Forest 3</div></a>
-<a href="forest4.html"><div style="background-image:url(P1020709.jpg)">Forest 4</div></a>
-<a href="forest5.html"><div style="background-image:url(P1020769.jpg)">Forest 5</div></a>
+<a href="P1020764.jpg"><div style="background-image:url(P1020764.jpg)">Autumn</div></a>
+<a href="P1020693.jpg"><div style="background-image:url(P1020693.jpg)">Bench</div></a>
+<a href="P1020678.jpg"><div style="background-image:url(P1020678.jpg)">Sun Leaf</div></a>
+<a href="P1020673.jpg"><div style="background-image:url(P1020673.jpg)">Blue Bloom</div></a>
+<a href="P1010945.jpg"><div style="background-image:url(P1010945.jpg)">Horizon</div></a>
+<a href="P1010781.jpg"><div style="background-image:url(P1010781.jpg)">Winter</div></a>
+<a href="P1010771.jpg"><div style="background-image:url(P1010771.jpg)">Snowy Path</div></a>
+<a href="P1010705.jpg"><div style="background-image:url(P1010705.jpg)">Nachtbaum</div></a>
+<a href="P1010658.jpg"><div style="background-image:url(P1010658.jpg)">Tannenbaum</div></a>
+<a href="P1010643.jpg"><div style="background-image:url(P1010643.jpg)">Snow Fence</div></a>
 
 
 <script>
@@ -90,14 +91,13 @@
 		photos = document.getElementsByTagName('div')
 
 		var width = window.innerWidth + "px"
-		// var height = window.innerHeight + "px"
-		var height = window.innerHeight/5 + "px"
+		var height = window.innerHeight/5// + "px"
 		var i = 0
 		while(i < photos.length) {
 			var photo = photos[i]
+			photo.style.setProperty("font-size", 0.9*height + "px")
 			photo.style.setProperty("width", width)
 			photo.style.setProperty("height", height)
-			photo.style.setProperty("font-size", height)
 			i++
 		}
 	}
