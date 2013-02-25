@@ -13,7 +13,7 @@
   <![endif]-->
   <style>
     html { 
-      background: url(/photos/P1020764.jpg) no-repeat top center fixed; 
+      background: url(/photos/Embracing%20Winter.jpg) no-repeat top center fixed;
       background-size: cover;
     }
     header {
@@ -33,7 +33,7 @@
     }
 
     .content {
-      background-color: rgba(195, 142, 98, 0.9);
+      background-color: rgba(184, 179, 183, 0.9);
       border-radius: 10px;
       padding: 10px;
       max-width: 40em;
