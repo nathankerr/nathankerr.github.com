@@ -3,10 +3,8 @@ title: Photos
 layout: photos
 ---
 
-<div id="2012" onclick="showOverlay('2012');">
-	<img src="2012-cover.jpg"/>
-</div>
-<div id="2012_overlay" class="overlay" onclick="hide(this)">
+<img src="2012-cover.jpg" onclick="showOverlay(this, '2012');"/>
+<div id="2012" class="overlay" onclick="hide(this)">
 	<ul>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2012">View at 500px</a></li>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2012">Downloads at 500px</a></li>
@@ -14,10 +12,8 @@ layout: photos
 	</ul>
 </div>
 
-<div id="2011" onclick="showOverlay('2011');">
-	<img src="2011-cover.jpg"/>
-</div>
-<div id="2011_overlay" class="overlay" onclick="hide(this)">
+<img src="2011-cover.jpg" onclick="showOverlay(this, '2011');" />
+<div id="2011" class="overlay" onclick="hide(this)">
 	<ul>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2011">View at 500px</a></li>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2011">Downloads at 500px</a></li>
@@ -25,10 +21,8 @@ layout: photos
 	</ul>
 </div>
 
-<div id="2010" onclick="showOverlay('2010');">
-	<img src="2010-cover.jpg"/>
-</div>
-<div id="2010_overlay" class="overlay" onclick="hide(this)">
+<img src="2010-cover.jpg" onclick="showOverlay(this, '2010');">
+<div id="2010" class="overlay" onclick="hide(this)">
 	<ul>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2010">View at 500px</a></li>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2010">Downloads at 500px</a></li>
@@ -37,4 +31,4 @@ layout: photos
 	</ul>
 </div>
 
-<div style="text-align: center">New collections every March, May, September, and December.</div>
+<div style="text-align: center; padding-bottom: 1em">New collections every March, May, September, and December.</div>

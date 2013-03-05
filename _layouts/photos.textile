@@ -26,19 +26,19 @@
 		body {
 			margin: 0px;
 			padding: 0px;
-			background-color: rgb(13, 13, 14);
+			background-color: rgb(21, 21, 23);
 			color: rgba(255, 255, 255, 0.6);
 		}
 		div {
 			width: 100%;
-			margin-bottom: 1em;
 		}
 		img {
 			width: 100%;
+			margin-bottom: 1em;
 		}
 		.overlay {
 			font-size: 200%;
-			background-color: rgba(13, 13, 14, 0.8);
+			background-color: rgba(21, 21, 23, 0.8);
 			position: absolute;
 			z-index: 10000;
 			display: none;
@@ -55,9 +55,8 @@
 
 	<script>
 		var rect
-		function showOverlay(base_id) {
-			to_overlay = document.getElementById(base_id)
-			overlay = document.getElementById(base_id + "_overlay")
+		function showOverlay(to_overlay, overlay_id) {
+			overlay = document.getElementById(overlay_id)
 
 			overlay.style.top = to_overlay.offsetTop + "px"
 			overlay.style.left = to_overlay.offsetLeft + "px"
@@ -88,11 +87,6 @@
 </header>
 
 {{ content }}
-
-<div style="text-align: center"><nav>
-	<a href="covers.html">Cover Photos</a>
-	<!-- | <a href="archive.html">Collection Archives</a> -->
-</nav></div>
 
 <!-- Google Analytics -->
 <script>
