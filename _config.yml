@@ -1,1 +1,1 @@
-exclude: [deploy.sh, pandoc-template.html, watermark.graffle, watermark.png, README.textile, CNAME]
+exclude: [deploy.sh, pandoc-template.html, watermark.graffle, watermark.png, README.textile, CNAME, TODO.txt, content.html]
