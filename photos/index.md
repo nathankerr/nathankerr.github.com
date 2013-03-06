@@ -9,6 +9,7 @@ layout: photos
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2012">View at 500px</a></li>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2012">Downloads at 500px</a></li>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2012">Canvas Prints at 500px</a></li>
+	<li><a href="http://www.blurb.com/b/4127415-twenty-pictures-best-of-2012">Book at Blurb</a></li>
 	</ul>
 </div>
 
@@ -18,6 +19,7 @@ layout: photos
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2011">View at 500px</a></li>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2011">Downloads at 500px</a></li>
 	<li><a href="http://500px.com/nathankerr/sets/twenty_pictures_best_of_2011">Canvas Prints at 500px</a></li>
+	<li><a href="http://www.blurb.com/b/4127392-twenty-pictures-best-of-2011">Book at Blurb</a></li>
 	</ul>
 </div>
 
