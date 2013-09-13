@@ -88,6 +88,31 @@
 
 {{ content }}
 
+<!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup" style="text-align:center">
+<form action="http://nathankerr.us5.list-manage.com/subscribe/post?u=4cc223347dc98140225a8d37b&amp;id=1565b45599" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+Subscribe to get updates.
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address </label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+<div class="mc-field-group">
+	<label for="mce-FNAME">First Name </label>
+	<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+</div>
+<div class="mc-field-group">
+	<label for="mce-LNAME">Last Name </label>
+	<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+
 <!-- Google Analytics -->
 <script>
 var _gaq = [['_setAccount', 'UA-1960166-2'], ['_trackPageview']];

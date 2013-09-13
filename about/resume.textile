@@ -8,6 +8,9 @@ h1{text-align: center}. Nathan Kerr
 p{text-align:center}. Phone: (602) 325-3299
 Email: "nathan@nathankerr.com":mailto:nathan@nathankerr.com
 
+* github: https://github.com/nathankerr
+* Publications: http://www.researchgate.net/profile/Nathan_Kerr/ 
+
 h2{text-align:center}. Education
 
 h3. Ph.D., Computer Science
@@ -26,7 +29,17 @@ Focused on the technical aspects of video production including field and studio 
 h2{text-align:center}. Experience
 
 h3. Research Assistant
-Arizona State University High Performance Computing Institute, Tempe, Arizona &mdash; 2007-Present
+University of Kaiserslautern, Integrated Communication Systems Group (ICSY), Kaiserslautern, Germany &mdash; 2010-present
+
+Research in Future Internet and Service Oriented Architectures.
+
+h3. Technology Support Analyst Senior
+Arizona State University High Performance Computing Insistitue, Tempe, Arizona &mdash; 2009-2010
+
+Top 500 class cluster operations and development. Focused on scheduling and load-balancing/management.
+
+h3. Research Assistant
+Arizona State University High Performance Computing Institute, Tempe, Arizona &mdash; 2007-2009
 
 Top 500 class cluster operations and development. Consulted on geospatial (GIS) data management and processing including running simulations, developing a data centric framework for organizing, processing, and visualizing GIS data, and exploring methods to execute GIS processing and analysis in parallel.
 
