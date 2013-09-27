@@ -1,0 +1,468 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>Twenty Pictures: Summer 2013</title>
+	<link href='http://fonts.googleapis.com/css?family=Alegreya&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<style>
+		body {
+			margin: 0;
+			text-align: center;
+			background-color: rgb(13,13,13);
+			color: rgb(204,204,204);
+			font-family: 'Alegreya', serif;
+		}
+		img {
+			max-width: 100%;
+			max-width: 100vw;
+			
+			max-height: calc(100% - 75px);
+			max-height: -webkit-calc(100% - 75px);
+			max-height: calc(100vh - 75px);
+		}
+		.picture-title {
+			font-size: 36px;
+			padding: 17px 0;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.cover {
+			min-height: 100%;
+			min-width: 100%;
+		}
+		.twenty-pictures, .author{
+			font-size: 36px;
+		}
+		.twenty-pictures a {
+			text-decoration: none;
+			color: inherit;
+		}
+		.author, .cover-title {
+			margin-top: 15px;
+		}
+		.cover-title {
+			font-size: 54px;
+		}
+		.year {
+			font-size: 98px;
+			margin-top: -60px;
+		}
+
+		nav {
+			position: fixed;
+			bottom: 0px;
+			right: 0px;
+			font-size: 24px;
+			color: rgba(204, 204, 204, 0.1);
+		}
+
+		nav a {
+			cursor: pointer;
+			text-decoration: none;
+			color: inherit;
+		}
+
+		 
+		html {
+			height: 100%;
+		}
+		body {
+			display: -webkit-box;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+
+			-webkit-box-align: center;
+			-moz-box-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+
+			margin: 0;
+			height: 100%;
+			width: 100%;
+		}
+
+		 
+		@font-face {
+			font-family: 'twenty-pictures-icons';
+			src: url('../font/twenty-pictures-icons.eot?23347467');
+			src: url('../font/twenty-pictures-icons.eot?23347467#iefix') format('embedded-opentype'),
+				url('../font/twenty-pictures-icons.woff?23347467') format('woff'),
+				url('../font/twenty-pictures-icons.ttf?23347467') format('truetype'),
+				url('../font/twenty-pictures-icons.svg?23347467#twenty-pictures-icons') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		.icon {
+			font-family: "twenty-pictures-icons";
+			font-style: normal;
+			font-weight: normal;
+			speak: none;
+
+			display: inline-block;
+			text-decoration: inherit;
+			width: 1em;
+			margin-right: .2em;
+			text-align: center;
+			 
+
+			 
+			font-variant: normal;
+			text-transform: none;
+
+			 
+			line-height: 1em;
+
+			 
+			 
+			 
+
+			 
+			 
+
+			 
+			 
+		}
+	</style>
+	<script>
+		var divs, current, lastevent
+
+		function hash_handler() {
+			if (location.hash == "")
+				return
+			next = parseInt(location.hash.substring(1))
+			if (next == NaN)
+				return
+			next = next % divs.length
+			if (next < divs.length && next >= 0) {
+				divs[current].className = "hidden"
+				current = next
+				divs[current].className = ""
+			} else {
+				window.location.hash = "#0"
+			}
+		}
+
+		function init() {
+			
+		 	divs = document.body.children
+		 	current = window.location.hash.substring(1) || 0
+		 	divs[current].className =""
+		 }
+
+		 function keyhandler(e) {
+		 	switch(e.which) {
+		 	case 39: 
+		 	case 0x20: 
+		 	case 0x4A: 
+		 		window.location.hash = "#" + (current+1)
+		 		break;
+		 	case 37: 
+		 	case 0x4B: 
+		 		window.location.hash = "#" + (current-1)
+		 		break;
+		 	default:
+		 		console.log(e)
+		 	}
+		 }
+
+		 window.addEventListener("load", init, false)
+		 window.addEventListener("keydown", keyhandler, false)
+		 window.addEventListener("hashchange", hash_handler, false)
+	</script>
+	
+	<script>
+	 var _gaq = [['_setAccount', 'UA-1960166-2'], ['_trackPageview']];
+	 (function(d, t) {
+	  var g = d.createElement(t),
+	      s = d.getElementsByTagName(t)[0];
+	  g.async = true;
+	  g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	  s.parentNode.insertBefore(g, s);
+	 })(document, 'script');
+	</script>
+
+	
+	<script type="text/javascript">
+	  (function(){
+	    var wsc=document.createElement('script');
+	    wsc.type='text/javascript';
+	    wsc.src=document.location.protocol+'//static.woopra.com/js/woopra.js';
+	    wsc.async=true;
+	    var ssc = document.getElementsByTagName('script')[0];
+	    ssc.parentNode.insertBefore(wsc, ssc);
+	  })();
+	</script>
+</head>
+<body>
+
+
+<div class="hidden">
+	<div class="cover">
+		<div class="twenty-pictures"><a href="../">Twenty Pictures</a></div>
+		<div class="cover-title">Summer</div>
+		<div class="year">2013</div>
+		<div class="author">Nathan Kerr</div>
+	</div>
+	<nav>
+		<a title="previous" class="icon" href="#20">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#1">&#xe803;</a>
+	</nav>
+</div>
+
+
+
+
+<div class="hidden">
+	<img src="Summer%20Blooms.jpg"/>
+	<div class="picture-title">Summer Blooms</div>
+	<nav>
+		<a title="previous" class="icon" href="#0">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4881">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#2">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Daisy.jpg"/>
+	<div class="picture-title">Daisy</div>
+	<nav>
+		<a title="previous" class="icon" href="#1">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4882">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#3">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Leaf%20the%20Sky.jpg"/>
+	<div class="picture-title">Leaf the Sky</div>
+	<nav>
+		<a title="previous" class="icon" href="#2">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4883">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#4">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Popcorn%20Mushrooms.jpg"/>
+	<div class="picture-title">Popcorn Mushrooms</div>
+	<nav>
+		<a title="previous" class="icon" href="#3">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4884">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#5">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Shell%20in%20a%20Crevice.jpg"/>
+	<div class="picture-title">Shell in a Crevice</div>
+	<nav>
+		<a title="previous" class="icon" href="#4">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4885">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#6">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Poof!.jpg"/>
+	<div class="picture-title">Poof!</div>
+	<nav>
+		<a title="previous" class="icon" href="#5">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4886">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#7">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Stump.jpg"/>
+	<div class="picture-title">Stump</div>
+	<nav>
+		<a title="previous" class="icon" href="#6">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4887">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#8">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Thistle.jpg"/>
+	<div class="picture-title">Thistle</div>
+	<nav>
+		<a title="previous" class="icon" href="#7">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4888">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#9">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Raspberry.jpg"/>
+	<div class="picture-title">Raspberry</div>
+	<nav>
+		<a title="previous" class="icon" href="#8">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4889">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#10">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Forest%20Path.jpg"/>
+	<div class="picture-title">Forest Path</div>
+	<nav>
+		<a title="previous" class="icon" href="#9">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4890">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#11">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Blackberry.jpg"/>
+	<div class="picture-title">Blackberry</div>
+	<nav>
+		<a title="previous" class="icon" href="#10">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4891">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#12">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Stacked%20Leaves.jpg"/>
+	<div class="picture-title">Stacked Leaves</div>
+	<nav>
+		<a title="previous" class="icon" href="#11">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4892">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#13">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Blueberry.jpg"/>
+	<div class="picture-title">Blueberry</div>
+	<nav>
+		<a title="previous" class="icon" href="#12">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4894">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#14">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Pine%20Branch.jpg"/>
+	<div class="picture-title">Pine Branch</div>
+	<nav>
+		<a title="previous" class="icon" href="#13">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4895">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#15">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Purple%20Bloom.jpg"/>
+	<div class="picture-title">Purple Bloom</div>
+	<nav>
+		<a title="previous" class="icon" href="#14">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4896">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#16">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Resting%20Cone.jpg"/>
+	<div class="picture-title">Resting Cone</div>
+	<nav>
+		<a title="previous" class="icon" href="#15">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4897">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#17">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Mint.jpg"/>
+	<div class="picture-title">Mint</div>
+	<nav>
+		<a title="previous" class="icon" href="#16">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4898">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#18">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Sappy%20Leaf.jpg"/>
+	<div class="picture-title">Sappy Leaf</div>
+	<nav>
+		<a title="previous" class="icon" href="#17">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4899">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#19">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Glowing%20Leaf.jpg"/>
+	<div class="picture-title">Glowing Leaf</div>
+	<nav>
+		<a title="previous" class="icon" href="#18">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4900">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#20">&#xe803;</a>
+	</nav>
+</div>
+
+<div class="hidden">
+	<img src="Beatle.jpg"/>
+	<div class="picture-title">Beatle</div>
+	<nav>
+		<a title="previous" class="icon" href="#19">&#xe802;</a>
+		<a title="buy book" class="icon" href="http://www.blurb.com/b/4628859-twenty-pictures-summer-2013">&#xe801;</a>
+		<a title="buy print" class="icon" href="http://www.peecho.com/print/en/4901">&#xe800;</a>
+		<a title="download" class="icon" href="https://gum.co/twenty-pictures-summer-2013">&#xe804;</a>
+		<a title="next" class="icon" href="#21">&#xe803;</a>
+	</nav>
+</div>
+
+</body>
+</html>
