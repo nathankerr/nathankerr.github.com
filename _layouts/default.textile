@@ -33,7 +33,7 @@
     }
 
     .content {
-      background-color: rgba(184, 179, 183, 0.9);
+      background-color: rgba(234, 216, 241, 0.9);
       border-radius: 10px;
       padding: 10px;
       max-width: 40em;
