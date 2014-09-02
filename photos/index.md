@@ -3,6 +3,10 @@ title: Photos
 layout: photos
 ---
 
+<a href="2014-summer"><img src="2014-summer-cover.jpg" alt="Summer 2014"></a>
+
+<a href="2014-spring"><img src="2014-spring-cover.jpg" alt="Spring 2014"></a>
+
 <a href="2014-winter"><img src="2014-winter-cover.jpg" alt="Winter 2014"></a>
 
 <a href="2013-autumn"><img src="2013-autumn-cover.jpg" alt="Autumn 2013"></a>
